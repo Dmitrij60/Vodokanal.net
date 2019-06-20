@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,9 +14,20 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+       $param = 'fuck this world';
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+           'param' => $param
         ]);
     }
+
+    /**
+     * @Route("/feedback", name="feedback")
+     */
+    public function feedbackAction()
+    {
+        return $this->render('default/feedback.html.twig');
+       //return new Response('<html><body>feedbac2</body></html>');
+    }
+
+
 }
