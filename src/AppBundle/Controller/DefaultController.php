@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-       $param = 'fuck this world';
+       $param = 'fuck this world!!!';
         return $this->render('@App/default/index.html.twig', [
            'param' => $param
         ]);
