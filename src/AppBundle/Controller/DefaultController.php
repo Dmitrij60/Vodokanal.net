@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+
 use Symfony\Component\HttpFoundation\Response;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,6 +16,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+
        $param = 'fuck this world!!!!!!!!!!!!!';
         return $this->render('@App/default/index.html.twig', [
            'param' => $param
@@ -28,6 +31,5 @@ class DefaultController extends Controller
         return $this->render('@App/default/feedback.html.twig');
 
     }
-
 
 }
