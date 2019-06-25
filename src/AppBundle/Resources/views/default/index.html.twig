@@ -1,0 +1,28 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block body %}
+   Fuck This Page!!! {{ param }}
+
+    <br>
+
+   {% if value %}
+      {{ 'AEEEE!!!' }}
+   {% endif %}
+
+    <br>
+
+    {% if not value2 %}
+    {{ 'ouh nooo(' }}
+    {% endif %}
+
+    <br>
+    {% for item in array %}
+        {{ item }} &nbsp
+    {% endfor %}
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+</style>
+{% endblock %}
