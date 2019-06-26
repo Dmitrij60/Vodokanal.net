@@ -16,3 +16,5 @@
 /vendor/
 /web/bundles/
 /.idea/
+/src/AppBundle/Resources/public/*
+!/src/AppBundle/Resources/public/css/style.css

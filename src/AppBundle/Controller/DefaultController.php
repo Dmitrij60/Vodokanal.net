@@ -14,10 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-       $param = 'fuck this world!!!!!!!!!!!!!';
-        return $this->render('@App/default/index.html.twig', [
-           'param' => $param
-        ]);
+        return $this->render('@App/default/index.html.twig');
     }
 
     /**
@@ -28,6 +25,5 @@ class DefaultController extends Controller
         return $this->render('@App/default/feedback.html.twig');
 
     }
-
 
 }
