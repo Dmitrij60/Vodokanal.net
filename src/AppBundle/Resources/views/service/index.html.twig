@@ -3,5 +3,9 @@
 {% block title %} Service {% endblock %}
 
 {% block body %}
-    service list
+
+    {% for service_id,service in services %}
+        <a href="{{ path('service_item', { id: service_id}) }}"> {{ service }}</a> <br>
+    {% endfor %}
+
 {% endblock %}

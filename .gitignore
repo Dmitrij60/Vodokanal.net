@@ -15,7 +15,6 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-<<<<<<< HEAD
-=======
 /.idea/
->>>>>>> f5f93e4f72213b1899e1125ad5c7181ed827be04
+/src/AppBundle/Resources/public/*
+!/src/AppBundle/Resources/public/css/style.css
