@@ -1,75 +1,128 @@
 <?php
 
-
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Cartridge
+ *
+ * @ORM\Table(name="cartridge")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CartridgeRepository")
+ */
 class Cartridge
 {
-    protected $cartridgeModel;
-    protected $printerModel;
-    protected $district;
-    protected $department;
-    protected $dueDate;
-    protected $isAttending;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cartridgeModel", type="string", length=255)
+     */
+    private $cartridgeModel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="printModel", type="string", length=255, nullable=true)
+     */
+    private $printModel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="discription", type="string", length=255, nullable=true)
+     */
+    private $discription;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set cartridgeModel
+     *
+     * @param string $cartridgeModel
+     *
+     * @return Cartridge
+     */
+    public function setCartridgeModel($cartridgeModel)
+    {
+        $this->cartridgeModel = $cartridgeModel;
+
+        return $this;
+    }
+
+    /**
+     * Get cartridgeModel
+     *
+     * @return string
+     */
     public function getCartridgeModel()
     {
         return $this->cartridgeModel;
     }
 
-    public function setCartridgeModel($cartridgeModel)
+    /**
+     * Set printModel
+     *
+     * @param string $printModel
+     *
+     * @return Cartridge
+     */
+    public function setPrintModel($printModel)
     {
-        $this->cartridgeModel = $cartridgeModel;
+        $this->printModel = $printModel;
+
+        return $this;
     }
 
-    public function getPrinterModel()
+    /**
+     * Get printModel
+     *
+     * @return string
+     */
+    public function getPrintModel()
     {
-        return $this->printerModel;
+        return $this->printModel;
     }
 
-    public function setPrinterModel($printerModel)
+    /**
+     * Set discription
+     *
+     * @param string $discription
+     *
+     * @return Cartridge
+     */
+    public function setDiscription($discription)
     {
-        $this->printerModel = $printerModel;
+        $this->discription = $discription;
+
+        return $this;
     }
 
-    public function getDistrict()
+    /**
+     * Get discription
+     *
+     * @return string
+     */
+    public function getDiscription()
     {
-        return $this->district;
-    }
-
-    public function setDistrict($district)
-    {
-        $this->district = $district;
-    }
-
-    public function getDepartment()
-    {
-        return $this->department;
-    }
-
-    public function setDepartment($department)
-    {
-        $this->department = $department;
-    }
-
-    public function getDueDate()
-    {
-        return $this->dueDate;
-    }
-
-    public function setDueDate(\DateTime $dueDate = null)
-    {
-        $this->dueDate = $dueDate;
-    }
-
-    public function getisAttending()
-    {
-        return $this->isAttending;
-    }
-
-    public function setisAttending($isAttending)
-    {
-        $this->isAttending = $isAttending;
+        return $this->discription;
     }
 }
+

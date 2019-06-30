@@ -4,7 +4,7 @@
 namespace AppBundle\Entity;
 
 
-class Repair
+class RepairOrder
 {
     protected $task;
     protected $district;

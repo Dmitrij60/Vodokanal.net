@@ -2,13 +2,12 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Cartridge;
+use AppBundle\Entity\CartridgeOrder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
 use AppBundle\Entity\Task;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -57,10 +56,7 @@ class ServiceController extends Controller
      */
     public function cartridgeAction()
     {
-        $task = new Cartridge();
-        //$task->setDistrict('Укажте район');
-
-
+        $task = new CartridgeOrder();
         $task->setDueDate(new \DateTime('tomorrow'));
 
         $form = $this->createFormBuilder($task)
