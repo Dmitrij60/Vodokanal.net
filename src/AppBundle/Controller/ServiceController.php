@@ -22,6 +22,9 @@ class ServiceController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+        dump($cartridge);
+        die();
         $services = [
             '0' => 'Заявки на картриджи',
             '1' => 'Ремонт техники',
