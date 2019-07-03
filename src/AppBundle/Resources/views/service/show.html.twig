@@ -4,6 +4,14 @@
 
 {% block body %}
 
+
     <h1>Вы выбрали услугу {{ service }}({{ id }})</h1>
+
+   <h1>Вы выбрали  {{ service }}</h1>
+
+    {#{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}#}
+
 
 {% endblock %}

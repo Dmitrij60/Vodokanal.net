@@ -38,10 +38,9 @@ class Cartridge
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="discription", type="string", length=255, nullable=true)
      */
-    private $description;
-
+    private $discription;
 
     /**
      * Get id
@@ -102,27 +101,24 @@ class Cartridge
     }
 
     /**
-     * Set description
+     * Set discription
      *
-     * @param string $description
+     * @param string $discription
      *
      * @return Cartridge
      */
-    public function setDescription($description)
+    public function setDiscription($discription)
     {
-        $this->description = $description;
-
+        $this->discription = $discription;
         return $this;
     }
-
     /**
-     * Get description
+     * Get discription
      *
      * @return string
      */
-    public function getDescription()
+    public function getDiscription()
     {
-        return $this->description;
+        return $this->discription;
     }
 }
-

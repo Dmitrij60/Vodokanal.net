@@ -14,7 +14,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('@App/default/index.html.twig');
+        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+
+        return $this->render('@App/default/index.html.twig', [
+            'cartridges' => $cartridges
+        ]);
     }
 
     /**

@@ -1,0 +1,15 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block title %} Cartridge page {% endblock %}
+
+{% block body %}
+
+    <h1>Картридж: {{ cartridge.cartridgeModel }}</h1>
+    <hr>
+    Подходит для принтера :{{ cartridge.printModel }}<br>
+    Комментарий :{{ cartridge.discription }}
+
+
+
+
+{% endblock %}
