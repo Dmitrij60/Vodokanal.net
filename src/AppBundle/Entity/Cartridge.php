@@ -43,6 +43,13 @@ class Cartridge
     private $discription;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="exist", type="integer", length=255, nullable=true)
+     */
+    private $exist;
+
+    /**
      * Get id
      *
      * @return int
@@ -120,5 +127,27 @@ class Cartridge
     public function getDiscription()
     {
         return $this->discription;
+    }
+
+    /**
+     * Set exist
+     *
+     * @param int $exist
+     *
+     * @return Cartridge
+     */
+    public function setExist($exist)
+    {
+        $this->exist = $exist;
+        return $this;
+    }
+    /**
+     * Get exist
+     *
+     * @return int
+     */
+    public function getExist()
+    {
+        return $this->exist;
     }
 }

@@ -11,6 +11,13 @@
         <a href="{{ path('cartridge_item', { id: cartridge.id }) }}">Картридж {{ cartridge.cartridgeModel }}</a> <br>
 
         {% endfor %}
+
+        <h1>На данный момент в наличии:</h1>
+        <hr>
+        {% for cartridgeExist in cartridgesExist %}
+        <a href="{{ path('cartridge_item', { id: cartridgeExist.id }) }}">Картридж {{ cartridgeExist.cartridgeModel }}</a> <br>
+        {% endfor %}
+
     </div>
 {% endblock %}
 
