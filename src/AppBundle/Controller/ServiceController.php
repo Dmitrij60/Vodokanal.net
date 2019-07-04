@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Controller;
-
 use AppBundle\Entity\CartridgeOrder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,8 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
-
 class ServiceController extends Controller
 {
     /**
@@ -22,9 +18,6 @@ class ServiceController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
-        dump($cartridge);
-        die();
         $services = [
             '0' => 'Заявки на картриджи',
             '1' => 'Ремонт техники',
@@ -33,7 +26,6 @@ class ServiceController extends Controller
         ];
         return  $this->render('@App/service/index.html.twig');
     }
-
     /**
      * @Route("/service/{id}", name="service_item", requirements={"id": "[0-9]+"})
      * @param $id
@@ -47,13 +39,11 @@ class ServiceController extends Controller
             '2' => 'Консультация',
             '3' => 'Заявка на выезд',
         ];
-
         return $this->render('@App/service/show.html.twig',[
             'id' => $id,
             'service' => $services[$id]
         ]);
     }
-
     /**
      * @Route("/service/cartridge", name="service_cartridge")
      */
@@ -61,7 +51,6 @@ class ServiceController extends Controller
     {
         $task = new CartridgeOrder();
         $task->setDueDate(new \DateTime('tomorrow'));
-
         $form = $this->createFormBuilder($task)
             //->add('task', TextType::class, ['label' => 'Укажите причину обращения'])
             ->add('district', ChoiceType::class, array(
@@ -96,12 +85,10 @@ class ServiceController extends Controller
             ))
             ->add('save', SubmitType::class, ['label' => 'Отправить заявку'])
             ->getForm();
-
-        return $this->render('@App/service/cartridges.twig', [
+        return $this->render('@App/service/cartridgesOrder.twig', [
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/service/repair", name="service_repair")
      */
@@ -110,10 +97,7 @@ class ServiceController extends Controller
         $task = new Task();
         $task->setTask('Укажте причину обращения');
         $task->setDistrict('Укажте район');
-
-
         $task->setDueDate(new \DateTime('tomorrow'));
-
         $form = $this->createFormBuilder($task)
             ->add('task', TextType::class, ['label' => 'Укажите причину обращения'])
             ->add('district', TextType::class, ['label' => 'Район'])
@@ -121,12 +105,10 @@ class ServiceController extends Controller
             ->add('dueDate', DateType::class)
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
             ->getForm();
-
         return $this->render('@App/service/repair.twig', [
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/service/consultation", name="service_consultation")
      */
@@ -135,10 +117,7 @@ class ServiceController extends Controller
         $task = new Task();
         $task->setTask('Укажте причину обращения');
         $task->setDistrict('Укажте район');
-
-
         $task->setDueDate(new \DateTime('tomorrow'));
-
         $form = $this->createFormBuilder($task)
             ->add('task', TextType::class, ['label' => 'Укажите причину обращения'])
             ->add('district', TextType::class, ['label' => 'Район'])
@@ -146,12 +125,10 @@ class ServiceController extends Controller
             ->add('dueDate', DateType::class)
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
             ->getForm();
-
         return $this->render('@App/service/consultation.twig', [
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/service/departure", name="service_departure")
      */
@@ -168,7 +145,6 @@ class ServiceController extends Controller
             ->add('dueDate', DateType::class)
             ->add('save', SubmitType::class, ['label' => 'Create Task'])
             ->getForm();
-
         return $this->render('@App/service/departure.twig', [
             'form' => $form->createView(),
         ]);

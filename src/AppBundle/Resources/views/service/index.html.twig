@@ -4,6 +4,12 @@
 
 {% block body %}
 
+{#
+    {% for service_id,service in services %}
+        <a href="{{ path('service_item', { id: service_id}) }}"> {{ service }}</a> <br>
+    {% endfor %}#}
+
+
     {#{% for service_id,service in services %}
         <a href="{{ path('service_item', { id: service_id}) }}"> {{ service }}</a> <br>
     {% endfor %}#}
@@ -12,4 +18,6 @@
     <a href="{{ path('service_repair') }}"> Заявка на ремонт техники</a> <br>
     <a href="{{ path('service_consultation') }}"> Заявка на консультацию</a> <br>
     <a href="{{ path('service_departure') }}"> Заявка на выезд</a> <br>
+    <a href="#"> Другое</a> <br>
+
 {% endblock %}

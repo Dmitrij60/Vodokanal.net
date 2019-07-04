@@ -1,0 +1,21 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block title %} Cartridges {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Перечень моделей картриджей используемых на предприятии:</h1>
+        <hr>
+
+        {% for cartridge in cartridges %}
+        <a href="{{ path('cartridge_item', { id: cartridge.id }) }}">Картридж {{ cartridge.cartridgeModel }}</a> <br>
+
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}

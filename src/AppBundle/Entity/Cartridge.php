@@ -42,7 +42,6 @@ class Cartridge
      */
     private $discription;
 
-
     /**
      * Get id
      *
@@ -111,10 +110,8 @@ class Cartridge
     public function setDiscription($discription)
     {
         $this->discription = $discription;
-
         return $this;
     }
-
     /**
      * Get discription
      *
@@ -125,4 +122,3 @@ class Cartridge
         return $this->discription;
     }
 }
-
