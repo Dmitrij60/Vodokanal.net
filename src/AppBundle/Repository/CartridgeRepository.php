@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Cartridge;
+
 /**
  * CartridgeRepository
  *
@@ -10,4 +12,17 @@ namespace AppBundle\Repository;
  */
 class CartridgeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return Cartridge[]
+     */
+    public function findExistCartridge()
+    {
+        return $this
+            ->createQueryBuilder('cartridge')
+            ->where('cartridge.exist = 1')
+            ->getQuery()
+            ->getResult()
+        ;
+
+    }
 }

@@ -15,10 +15,19 @@ class CartridgeController extends Controller
      */
     public function indexAction()
     {
-        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+        $cartridges = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Cartridge')
+            ->findAll();
+
+        $cartridgesExist = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Cartridge')
+            ->findExistCartridge();
 
         return $this->render('@App/cartridges/index.html.twig', [
-            'cartridges' => $cartridges
+            'cartridges' => $cartridges,
+            'cartridgesExist' => $cartridgesExist
         ]);
     }
 
