@@ -1,6 +1,6 @@
 <?php
 namespace AppBundle\Controller;
-use AppBundle\Entity\CartridgeOrder;
+use AppBundle\Entity\CartridgeOrder2;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-class ServiceController extends Controller
+class ServiceController extends ApplicationController
 {
     /**
      * @Route("/service", name="service_list" )
@@ -49,7 +49,7 @@ class ServiceController extends Controller
      */
     public function cartridgeAction()
     {
-        $task = new CartridgeOrder();
+        $task = new CartridgeOrder2();
         $task->setDueDate(new \DateTime('tomorrow'));
         $form = $this->createFormBuilder($task)
             //->add('task', TextType::class, ['label' => 'Укажите причину обращения'])

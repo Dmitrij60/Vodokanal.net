@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CartridgeController extends Controller
+class CartridgeController extends ApplicationController
 {
     /**
      * @Route("/cartridge", name="cartridge_list")
@@ -38,6 +38,7 @@ class CartridgeController extends Controller
      */
     public function showAction(Cartridge $cartridge)
     {
+        dump($cartridge);
        /* $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->find($id);
 
         if(!$cartridge){

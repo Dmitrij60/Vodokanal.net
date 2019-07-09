@@ -1,0 +1,28 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block title %} Printers {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Перечень моделей принтеров используемых на предприятии:</h1>
+        <hr>
+
+        {% for printer in printers %}
+        <a href="{{ path('printer_item', { id: printer.id }) }}">Принтер {{ printer.printerModel }}</a> <br>
+
+        {% endfor %}
+
+        {#<h1>На данный момент в наличии:</h1>
+        <hr>
+        {% for cartridgeExist in cartridgesExist %}
+        <a href="{{ path('cartridge_item', { id: cartridgeExist.id }) }}">Картридж {{ cartridgeExist.cartridgeModel }}</a> <br>
+        {% endfor %}#}
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
