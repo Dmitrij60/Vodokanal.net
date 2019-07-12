@@ -73,7 +73,8 @@
 <main role="main" class="container">
     {% block body %}
     {% endblock %}
-
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
 </main><!-- /.container -->
 
 <script src="{{ asset('bundles/app/js/jquery-3.3.1.min.js') }}"></script>
