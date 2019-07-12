@@ -4,10 +4,11 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CartridgeOrderType extends AbstractType
+class DepartureOrderType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,7 +17,7 @@ class CartridgeOrderType extends AbstractType
     {
         $builder
             ->add('district', ChoiceType::class, [
-                'choices' => [
+                'choices'=> [
                     'Данков' => 'dankov',
                     'Доброе' => 'dobroe',
                     'Измалково' => 'izmalkovo',
@@ -26,39 +27,19 @@ class CartridgeOrderType extends AbstractType
                     'Становое' => 'stanovoe',
                     'Долгоруково' => 'dolgorukovo',
                 ],
-                'label' => false,
+                'label' => false
             ])
-            ->add('department', ChoiceType::class, [
-                'choices' => [
-                    'Абонентский отдел' => 'abon',
-                    'Приемная' => 'priem',
-                    'ПТО' => 'pto',
-                    'Диспетчерская' => 'disp',
-                ],
-                'label' => false,])
-            ->add('cartridgeModel', ChoiceType::class, [
-                'choices' => [
-                    '280' => 'dankov',
-                    '78A' => 'dobroe',
-                    '3310' => 'izmalkovo',
-                    '3130' => 'krasnoe',
-                    '505' => 'lebedian',
-                ]
-                ,
-                'label' => false,
+            ->add('reason', TextareaType::class, [
+                'label' => false
             ])
-            ->add('count', null, [
-                'label' => false,
-            ]);
-
-    }
-    /**
+        ;
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CartridgeOrder'
+            'data_class' => 'AppBundle\Entity\DepartureOrder'
         ));
     }
 
@@ -67,7 +48,7 @@ class CartridgeOrderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_cartridgeorder';
+        return 'appbundle_departureorder';
     }
 
 

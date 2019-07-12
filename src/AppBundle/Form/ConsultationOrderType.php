@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CartridgeOrderType extends AbstractType
+class ConsultationOrderType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,7 +16,7 @@ class CartridgeOrderType extends AbstractType
     {
         $builder
             ->add('district', ChoiceType::class, [
-                'choices' => [
+                'choices'=> [
                     'Данков' => 'dankov',
                     'Доброе' => 'dobroe',
                     'Измалково' => 'izmalkovo',
@@ -26,7 +26,8 @@ class CartridgeOrderType extends AbstractType
                     'Становое' => 'stanovoe',
                     'Долгоруково' => 'dolgorukovo',
                 ],
-                'label' => false,
+                'label' => false
+
             ])
             ->add('department', ChoiceType::class, [
                 'choices' => [
@@ -36,29 +37,20 @@ class CartridgeOrderType extends AbstractType
                     'Диспетчерская' => 'disp',
                 ],
                 'label' => false,])
-            ->add('cartridgeModel', ChoiceType::class, [
-                'choices' => [
-                    '280' => 'dankov',
-                    '78A' => 'dobroe',
-                    '3310' => 'izmalkovo',
-                    '3130' => 'krasnoe',
-                    '505' => 'lebedian',
-                ]
-                ,
-                'label' => false,
+            ->add('reason', null, [
+                'label' => false
             ])
-            ->add('count', null, [
-                'label' => false,
-            ]);
-
-    }
-    /**
+            ->add('contact', null, [
+                'label' => false
+            ])
+        ;
+    }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CartridgeOrder'
+            'data_class' => 'AppBundle\Entity\ConsultationOrder'
         ));
     }
 
@@ -67,7 +59,7 @@ class CartridgeOrderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_cartridgeorder';
+        return 'appbundle_consultationorder';
     }
 
 

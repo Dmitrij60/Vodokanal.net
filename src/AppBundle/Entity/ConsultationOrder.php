@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * RepairOrder
+ * ConsultationOrder
  *
- * @ORM\Table(name="repair_order")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\RepairOrderRepository")
+ * @ORM\Table(name="consultation_order")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ConsultationOrderRepository")
  */
-class RepairOrder
+class ConsultationOrder
 {
     /**
      * @var int
@@ -38,20 +38,6 @@ class RepairOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=255, nullable=true)
-     */
-    private $type;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="inv_num", type="string", length=255, nullable=true)
-     */
-    private $invNum;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
     private $reason;
@@ -59,7 +45,14 @@ class RepairOrder
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=255, nullable=true)
+     * @ORM\Column(name="contact", type="string", length=255, nullable=true)
+     */
+    private $contact;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=255)
      */
     private $status;
 
@@ -74,7 +67,6 @@ class RepairOrder
     {
         $this->created = new \DateTime();
     }
-
 
     /**
      * Get id
@@ -91,7 +83,7 @@ class RepairOrder
      *
      * @param string $district
      *
-     * @return CartridgeOrder
+     * @return ConsultationOrder
      */
     public function setDistrict($district)
     {
@@ -115,7 +107,7 @@ class RepairOrder
      *
      * @param string $department
      *
-     * @return CartridgeOrder
+     * @return ConsultationOrder
      */
     public function setDepartment($department)
     {
@@ -135,59 +127,11 @@ class RepairOrder
     }
 
     /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return RepairOrder
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Set invNum
-     *
-     * @param string $invNum
-     *
-     * @return RepairOrder
-     */
-    public function setInvNum($invNum)
-    {
-        $this->invNum = $invNum;
-
-        return $this;
-    }
-
-    /**
-     * Get invNum
-     *
-     * @return string
-     */
-    public function getInvNum()
-    {
-        return $this->invNum;
-    }
-
-    /**
      * Set reason
      *
      * @param string $reason
      *
-     * @return RepairOrder
+     * @return ConsultationOrder
      */
     public function setReason($reason)
     {
@@ -207,11 +151,35 @@ class RepairOrder
     }
 
     /**
+     * Set contact
+     *
+     * @param string $contact
+     *
+     * @return ConsultationOrder
+     */
+    public function setContact($contact)
+    {
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Get contact
+     *
+     * @return string
+     */
+    public function getContact()
+    {
+        return $this->contact;
+    }
+
+    /**
      * Set status
      *
      * @param string $status
      *
-     * @return RepairOrder
+     * @return ConsultationOrder
      */
     public function setStatus($status)
     {
@@ -235,7 +203,7 @@ class RepairOrder
      *
      * @param \DateTime $created
      *
-     * @return RepairOrder
+     * @return ConsultationOrder
      */
     public function setCreated($created)
     {

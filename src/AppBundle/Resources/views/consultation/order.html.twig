@@ -20,16 +20,12 @@
         {{ form_row(orderForm.department) }}
         <br>
 
-        {{ form_label(orderForm.type, 'Укажите тип ремонтируемой техники') }}
-        {{ form_row(orderForm.type) }}
-        <br>
-
-        {{ form_label(orderForm.invNum, 'Укажите инвентарный номер техники') }}
-        {{ form_row(orderForm.invNum) }}
-        <br>
-
         {{ form_label(orderForm.reason, 'Опишите поломку, как можно подробнее') }}
         {{ form_row(orderForm.reason) }}
+        <br>
+
+        {{ form_label(orderForm.contact, 'укажите Ваши контакты') }}
+        {{ form_row(orderForm.contact) }}
         <br>
 
         {{ form_end(orderForm) }}
