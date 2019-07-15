@@ -1,0 +1,44 @@
+{% extends '@App/layout.html.twig' %}
+
+{% block title %} Repair order page {% endblock %}
+
+{% block body %}
+
+
+    <div class="starter-template">
+        <h1>Заявка ремонт техники:</h1>
+        <hr>
+        <br>
+
+        {{ form_start(orderForm) }}
+
+        {{ form_label(orderForm.district, 'Укажите Ваш район') }}
+        {{ form_row(orderForm.district) }}
+        <br>
+
+        {{ form_label(orderForm.department, 'Укажите Ваш отдел') }}
+        {{ form_row(orderForm.department) }}
+        <br>
+
+        {{ form_label(orderForm.type, 'Укажите тип ремонтируемой техники') }}
+        {{ form_row(orderForm.type) }}
+        <br>
+
+        {{ form_label(orderForm.invNum, 'Укажите инвентарный номер техники') }}
+        {{ form_row(orderForm.invNum) }}
+        <br>
+
+        {{ form_label(orderForm.reason, 'Опишите поломку, как можно подробнее') }}
+        {{ form_row(orderForm.reason) }}
+        <br>
+
+        {{ form_end(orderForm) }}
+        <br>
+        <hr>
+        <a class="" href="{{ path('cartridge_list') }}">Информация по моделям картриджей</a><br>
+        <a class="" href="{{ path('printer_list') }}">Информация по моделям принтеров</a>
+
+    </div>
+
+
+{% endblock %}

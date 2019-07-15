@@ -24,6 +24,7 @@
             #form_login: ~
 # app/config/security.yml
 security:
+    access_denied_url: /
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
@@ -50,4 +51,9 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/service, role: ROLE_USER }
+        - { path: ^/repair_order, role: ROLE_USER }
+        - { path: ^/departure_order, role: ROLE_USER }
+        - { path: ^/consultation_order, role: ROLE_USER }
+        - { path: ^/cartridge_order, role: ROLE_USER }
