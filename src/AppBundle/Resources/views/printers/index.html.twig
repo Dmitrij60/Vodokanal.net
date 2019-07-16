@@ -11,6 +11,16 @@
         <a href="{{ path('printer_item', { id: printer.id }) }}">Принтер {{ printer.printerModel }}</a> <br>
 
         {% endfor %}
+<<<<<<< HEAD
+=======
+
+        {#<h1>На данный момент в наличии:</h1>
+        <hr>
+        {% for cartridgeExist in cartridgesExist %}
+        <a href="{{ path('cartridge_item', { id: cartridgeExist.id }) }}">Картридж {{ cartridgeExist.cartridgeModel }}</a> <br>
+        {% endfor %}#}
+
+>>>>>>> 5a61c887ab83f254b61498dde1ac8abd7877dad1
     </div>
 {% endblock %}
 
