@@ -38,13 +38,12 @@ class CartridgeOrderType extends AbstractType
                 'label' => false,])
             ->add('cartridgeModel', ChoiceType::class, [
                 'choices' => [
-                    '280' => 'dankov',
-                    '78A' => 'dobroe',
-                    '3310' => 'izmalkovo',
-                    '3130' => 'krasnoe',
-                    '505' => 'lebedian',
-                ]
-                ,
+                    '280' => '280',
+                    '78A' => '78A',
+                    '3310' => '3310',
+                    '3130' => '3130',
+                    '505' => '505',
+                ],
                 'label' => false,
             ])
             ->add('count', null, [

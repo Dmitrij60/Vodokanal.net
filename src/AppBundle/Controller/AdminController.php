@@ -25,6 +25,7 @@ class AdminController extends ApplicationController
 
     /**
      * @Route("/admin_grid", name="admin_grid")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function gridAction()
     {
@@ -42,12 +43,69 @@ class AdminController extends ApplicationController
     }
 
     /**
-     * @Route("/admin_grid2", name="admin_grid2")
+     * @Route("/admin_cartridgeOrder", name="admin_cartridgeOrder")
      */
-    public function gridAction2()
+    public function gridCartridgeOrderAction()
     {
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:CartridgeOrder');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig');
+    }
+
+    /**
+     * @Route("/adminRepairOrder", name="admin_repairOrder")
+     */
+    public function gridRepairOrderAction()
+    {
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:RepairOrder');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig');
+    }
+
+    /**
+     * @Route("/adminDepartureOrder", name="admin_departureOrder")
+     */
+    public function gridDepartureOrderAction()
+    {
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:DepartureOrder');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig');
+    }
+
+    /**
+     * @Route("/adminConsultationOrder", name="admin_consultationOrder")
+     */
+    public function gridConsultationOrderAction()
+    {
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:ConsultationOrder');
 
         // Get a Grid instance
         $grid = $this->get('grid');
