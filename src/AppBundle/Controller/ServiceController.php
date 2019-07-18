@@ -24,6 +24,7 @@ class ServiceController extends ApplicationController
             '2' => 'Консультация',
             '3' => 'Заявка на выезд',
         ];
+
         return  $this->render('@App/service/index.html.twig');
     }
     /**

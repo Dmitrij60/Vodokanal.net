@@ -41,8 +41,11 @@ security:
             pattern: ^/
            # user_checker: fos_user.user_checker
             form_login:
+                success_handler: authentication.handler.login_success_handler
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+
+
 
             logout:       true
             anonymous:    true
