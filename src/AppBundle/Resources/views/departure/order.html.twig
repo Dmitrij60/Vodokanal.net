@@ -12,8 +12,7 @@
 
         {{ form_start(orderForm) }}
 
-        {{ form_label(orderForm.district, 'Укажите Ваш район') }}
-        {{ form_row(orderForm.district) }}
+        {{ form_row(orderForm.district, {attr: { value : app.user.username } }) }}
         <br>
 
         {{ form_label(orderForm.reason, 'Укажите причину заявки на выезд') }}

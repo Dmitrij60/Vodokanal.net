@@ -18,3 +18,5 @@
 /.idea/
 /src/AppBundle/Resources/public/*
 !/src/AppBundle/Resources/public/css/style.css
+!/vendor/friendsofsymfony/
+!/vendor/apy/
