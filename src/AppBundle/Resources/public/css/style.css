@@ -13,7 +13,10 @@ body {
 }
 /****** END NAVIGATION   ******/
 
-/****** grid   ******/
+
+
+/******    GRID   ******/
+
 .grid table
 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -137,4 +140,6 @@ th div {
     width: 150px;
 }
 
-/****** GRID END   ******/
+
+/****** END GRID   ******/
+
