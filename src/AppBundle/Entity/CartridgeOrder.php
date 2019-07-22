@@ -45,7 +45,7 @@ class CartridgeOrder
 
     /**
      * @var string
-     *@GRID\Column(title="район")
+     *@GRID\Column(title="отдел")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;

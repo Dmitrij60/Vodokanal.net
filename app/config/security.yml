@@ -55,7 +55,7 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/register, role: ROLE_ADMIN }
-        - { path: ^/service, role: ROLE_USER }
+        - { path: ^/service_list, role: ROLE_USER }
         - { path: ^/repair_order, role: ROLE_USER }
         - { path: ^/departure_order, role: ROLE_USER }
         - { path: ^/consultation_order, role: ROLE_USER }

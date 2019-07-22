@@ -22,6 +22,18 @@ class DefaultController extends ApplicationController
     }
 
     /**
+     * @Route("/", name="homepageUser")
+     */
+    public function indexUserAction(Request $request)
+    {
+        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+
+        return $this->render('@App/default/index.html.twig', [
+            'cartridges' => $cartridges
+        ]);
+    }
+
+    /**
      * @Route("/feedback", name="feedback")
      */
     public function feedbackAction()
