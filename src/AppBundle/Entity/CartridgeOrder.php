@@ -60,7 +60,23 @@ class CartridgeOrder
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->issued = 0;
+        $this->status = 'заявка подана';
     }
+
+    /**
+     * @var integer
+     *@GRID\Column(title="выдано, шт")
+     * @ORM\Column(name="issued", type="integer", length=255, nullable=true)
+     */
+    private $issued;
+
+    /**
+     * @var string
+     *@GRID\Column(title="статус заявки")
+     * @ORM\Column(name="status", type="string", length=255, nullable=true)
+     */
+    private $status;
 
     /**
      * Get id
@@ -190,6 +206,54 @@ class CartridgeOrder
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set issued
+     *
+     * @param integer $issued
+     *
+     * @return CartridgeOrder
+     */
+    public function setIssued($issued)
+    {
+        $this->issued = $issued;
+
+        return $this;
+    }
+
+    /**
+     * Get issued
+     *
+     * @return string
+     */
+    public function getIssued()
+    {
+        return $this->issued;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return CartridgeOrder
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 

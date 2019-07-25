@@ -6,6 +6,8 @@ namespace AppBundle\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use APY\DataGridBundle\Grid\Source\Entity;
+use APY\DataGridBundle\Grid\Action\RowAction;
+use APY\DataGridBundle\Grid\Column\BlankColumn;
 
 class AdminController extends ApplicationController
 {
@@ -38,6 +40,12 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        // create a column
+        $MyColumn = new BlankColumn(array ( ' id '  =>  ' myBlankColumn ' , ' title '  =>  ' My Blank Column ' , ' size '  =>  ' 54 ' ));
+
+        // Add the column to the last position
+        $grid->addColumn($MyColumn);
+
         // OR with only one value
         $grid->setLimits(5);
 
@@ -61,6 +69,14 @@ class AdminController extends ApplicationController
 
         // OR with only one value
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+
+        $title = 'Изменить';
+        $route = 'edit_cartridge_order';
+        $rowAction = new RowAction($title, $route);
+        $rowAction -> setRouteParameters ( array ('id'));
+       // $rowAction2 -> setRouteParametersMapping ( array ( ' user.information.country '  =>  ' countryId ' ));
+        $grid->addRowAction($rowAction);
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig');

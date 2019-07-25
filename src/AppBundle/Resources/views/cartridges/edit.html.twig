@@ -1,0 +1,34 @@
+{% extends '@App/layoutUser.html.twig' %}
+
+{% block title %} Cartridge order page {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Заявка на картриджи:</h1>
+        <hr>
+        <br>
+
+      {{ form_start(orderForm) }}
+
+
+
+      <br>
+
+      {{ form_label(orderForm.count, 'Укажите кол-во') }}
+      {{ form_row(orderForm.count) }}
+      <br>
+
+      {{ form_end(orderForm) }}
+        <br>
+        <hr>
+        <a class="" href="{{ path('cartridge_list') }}">Информация по моделям картриджей</a><br>
+        <a class="" href="{{ path('printer_list') }}">Информация по моделям принтеров</a>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
