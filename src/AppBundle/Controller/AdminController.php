@@ -29,8 +29,8 @@ class AdminController extends ApplicationController
      */
     public function gridAction()
     {
-        /*dump($this->container);
-        die;*/
+        dump($this->container);
+        die;
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:MyEntity');
 
