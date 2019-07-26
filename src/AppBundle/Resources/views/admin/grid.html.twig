@@ -5,8 +5,12 @@
 {% block body %}
     <div class="starter-template">
 
-        { grid(grid, _self) }}
+
+        {{ grid(grid, _self) }}
+
         <hr>
+        
+
        {# {{ grid_search(grid) }}#}
         {% block grid_filters %}{% endblock %}
     </div>
