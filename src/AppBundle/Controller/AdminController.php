@@ -40,6 +40,9 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        // OR with only one value
+        $grid->setLimits(5);
+
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig');
     }
@@ -58,6 +61,8 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig');

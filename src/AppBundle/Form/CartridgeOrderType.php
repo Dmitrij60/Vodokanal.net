@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Security\Core\Security;
+
 
 class CartridgeOrderType extends AbstractType
 {
@@ -14,19 +17,9 @@ class CartridgeOrderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('district', ChoiceType::class, [
-                'choices' => [
-                    'Данков' => 'dankov',
-                    'Доброе' => 'dobroe',
-                    'Измалково' => 'izmalkovo',
-                    'Красное' => 'krasnoe',
-                    'Лебедянь' => 'lebedian',
-                    'Липецкий р-н' => 'lipeckii',
-                    'Становое' => 'stanovoe',
-                    'Долгоруково' => 'dolgorukovo',
-                ],
-                'label' => false,
+       $builder
+            ->add('district', HiddenType::class, [
+                'data' => null,
             ])
             ->add('department', ChoiceType::class, [
                 'choices' => [
