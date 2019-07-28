@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\CartridgeOrder;
+
 /**
  * CartridgeOrderRepository
  *
@@ -10,4 +12,5 @@ namespace AppBundle\Repository;
  */
 class CartridgeOrderRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

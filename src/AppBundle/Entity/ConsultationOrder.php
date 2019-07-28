@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
  * ConsultationOrder
@@ -23,42 +24,42 @@ class ConsultationOrder
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="район")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="отдел")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="причина")
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
     private $reason;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="контакт")
      * @ORM\Column(name="contact", type="string", length=255, nullable=true)
      */
     private $contact;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="статус")
      * @ORM\Column(name="status", type="string", length=255, nullable=true)
      */
     private $status;
 
     /**
      * @var \DateTime
-     *
+     * @GRID\Column(title="подана", format="d.m.y H:i:s")
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
@@ -66,6 +67,7 @@ class ConsultationOrder
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->status = 'Заявка подана';
     }
 
     /**

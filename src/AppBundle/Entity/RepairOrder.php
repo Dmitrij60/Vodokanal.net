@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
  * RepairOrder
@@ -23,56 +24,58 @@ class RepairOrder
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="район")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="отдел")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
 
     /**
      * @var string
-     *
+     *@GRID\Column(title="тип техники")
      * @ORM\Column(name="type", type="string", length=255, nullable=true)
      */
     private $type;
 
     /**
      * @var string
-     *
+     *@GRID\Column(title="инв. номер")
      * @ORM\Column(name="inv_num", type="string", length=255, nullable=true)
      */
     private $invNum;
 
     /**
      * @var string
-     *
+     *@GRID\Column(title="причина")
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
     private $reason;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=255, nullable=true)
-     */
-    private $status;
 
     /**
      * @var \DateTime
-     *
+     *@GRID\Column(title="подана", format="d.m.y H:i:s")
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
 
+    /**
+     * @var string
+     *@GRID\Column(title="статус")
+     * @ORM\Column(name="status", type="string", length=255, nullable=true)
+     */
+    private $status;
+
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->status = 'Заявка подана';
     }
 
 
@@ -207,30 +210,6 @@ class RepairOrder
     }
 
     /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return RepairOrder
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-    /**
      * Set created
      *
      * @param \DateTime $created
@@ -252,6 +231,30 @@ class RepairOrder
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return RepairOrder
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 

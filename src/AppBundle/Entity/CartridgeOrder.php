@@ -61,7 +61,7 @@ class CartridgeOrder
     {
         $this->created = new \DateTime();
         $this->issued = 0;
-        $this->status = 'заявка подана';
+        $this->status = 'Заявка подана';
     }
 
     /**
@@ -225,7 +225,7 @@ class CartridgeOrder
     /**
      * Get issued
      *
-     * @return string
+     * @return integer
      */
     public function getIssued()
     {

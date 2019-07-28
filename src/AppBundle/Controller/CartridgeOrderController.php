@@ -47,29 +47,6 @@ class CartridgeOrderController extends ApplicationController
         ]);
     }
 
-    /**
-     * @Route("/edit_cartridge_order_status/{id}", name="edit_cartridge_order")
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function orderStatusAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $order = $em->getRepository(CartridgeOrder::class)->find($id);
-
-        if (!$order) {
-            throw $this->createNotFoundException(
-                'No order found for id '.$id
-            );
-        }
-
-        $order->setStatus('Заявка закрыта');
-        $em->flush();
-
-        return $this->redirectToRoute('admin_cartridgeOrder', [
-            'id' => $order->getId()
-        ]);
-    }
     /*public function orderStatusAction(Request $request)
     {
         $form = $this->createForm(EditCartridgeOrderType::class);

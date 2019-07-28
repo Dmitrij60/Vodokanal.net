@@ -1,8 +1,5 @@
 <?php
-
-
 namespace AppBundle\Controller;
-
 
 use Symfony\Component\Routing\Annotation\Route;
 use APY\DataGridBundle\Grid\Source\Entity;
@@ -11,7 +8,7 @@ use APY\DataGridBundle\Grid\Column\BlankColumn;
 use APY\DataGridBundle\Grid\Column\ActionsColumn;
 use APY\DataGridBundle\Grid\Column\JoinColumn;
 
-class AdminController extends ApplicationController
+class  AdminController extends ApplicationController
 {
 
     /**
@@ -62,6 +59,7 @@ class AdminController extends ApplicationController
      */
     public function gridCartridgeOrderAction()
     {
+        $text = 'Заявки на картриджи';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:CartridgeOrder');
 
@@ -71,18 +69,50 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        $grid->setDefaultOrder('id', 'desc');
+
         // OR with only one value
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
-        $title = 'Изменить';
-        $route = 'edit_cartridge_order';
-        $rowAction = new RowAction($title, $route);
-        $rowAction -> setRouteParameters ( array ('id'));
+        $actions1Column = new ActionsColumn('action1', 'выдать, шт');
+        $grid->addColumn($actions1Column, 8);
 
-        $grid->addRowAction($rowAction);
+        $actions2Column = new ActionsColumn('action2', 'изменить статус');
+        $grid->addColumn($actions2Column, 10);
+
+        $plusTitle = '+ шт';
+        $plusRoute = 'plus_cartridge_order';
+        $rowPlusAction = new RowAction($plusTitle, $plusRoute);
+        $rowPlusAction->setColumn('action1');
+        $rowPlusAction -> setRouteParameters ( array ('id'));
+
+        $minusTitle = '- шт';
+        $minusRoute = 'minus_cartridge_order';
+        $rowMinusAction = new RowAction($minusTitle, $minusRoute);
+        $rowMinusAction->setColumn('action1');
+        $rowMinusAction -> setRouteParameters ( array ('id'));
+
+        $closedTitle = 'Заявка отменена';
+        $closedRoute = 'closed_cartridge_order';
+        $rowClosedAction = new RowAction($closedTitle, $closedRoute);
+        $rowClosedAction->setColumn('action2');
+        $rowClosedAction -> setRouteParameters ( array ('id'));
+
+        $confirmTitle = 'Заявка выполнена';
+        $confirmRoute = 'confirm_cartridge_order';
+        $rowConfirmAction = new RowAction($confirmTitle, $confirmRoute);
+        $rowConfirmAction->setColumn('action2');
+        $rowConfirmAction -> setRouteParameters ( array ('id'));
+
+        $grid->addRowAction($rowPlusAction);
+        $grid->addRowAction($rowMinusAction);
+        $grid->addRowAction($rowClosedAction);
+        $grid->addRowAction($rowConfirmAction);
 
         // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'param' => $text
+        ]);
     }
 
     /**
@@ -90,6 +120,7 @@ class AdminController extends ApplicationController
      */
     public function gridRepairOrderAction()
     {
+        $text = 'Заявки на ремонт техники';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:RepairOrder');
 
@@ -99,9 +130,31 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        $grid->setDefaultOrder('id', 'desc');
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $actions2Column = new ActionsColumn('action1', 'изменить статус');
+        $grid->addColumn($actions2Column, 9);
+
+        $closedTitle = 'Заявка отменена';
+        $closedRoute = 'closed_cartridge_order';
+        $rowClosedAction = new RowAction($closedTitle, $closedRoute);
+        $rowClosedAction->setColumn('action1');
+        $rowClosedAction -> setRouteParameters ( array ('id'));
+
+        $confirmTitle = 'Заявка выполнена';
+        $confirmRoute = 'confirm_cartridge_order';
+        $rowConfirmAction = new RowAction($confirmTitle, $confirmRoute);
+        $rowConfirmAction->setColumn('action1');
+        $rowConfirmAction -> setRouteParameters ( array ('id'));
+
+        $grid->addRowAction($rowClosedAction);
+        $grid->addRowAction($rowConfirmAction);
 
         // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'param' => $text
+        ]);
     }
 
     /**
@@ -109,6 +162,7 @@ class AdminController extends ApplicationController
      */
     public function gridDepartureOrderAction()
     {
+        $text = 'Заявки на выезд';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:DepartureOrder');
 
@@ -118,9 +172,15 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        $grid->setDefaultOrder('id', 'desc');
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+
 
         // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'param' => $text
+        ]);
     }
 
     /**
@@ -128,6 +188,7 @@ class AdminController extends ApplicationController
      */
     public function gridConsultationOrderAction()
     {
+        $text = 'Заявки на консультацию';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:ConsultationOrder');
 
@@ -137,9 +198,15 @@ class AdminController extends ApplicationController
         // Attach the source to the grid
         $grid->setSource($source);
 
+        $grid->setDefaultOrder('id', 'desc');
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+
 
         // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'param' => $text
+        ]);
     }
 
 }
