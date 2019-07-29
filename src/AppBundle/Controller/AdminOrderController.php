@@ -12,6 +12,8 @@ use APY\DataGridBundle\Grid\Action\RowAction;
 use APY\DataGridBundle\Grid\Column\BlankColumn;
 use APY\DataGridBundle\Grid\Column\ActionsColumn;
 use APY\DataGridBundle\Grid\Column\JoinColumn;
+use \Doctrine\DBAL\Driver\PDOMySql;
+use \PDO;
 
 class  AdminOrderController extends ApplicationController
 {
@@ -22,7 +24,28 @@ class  AdminOrderController extends ApplicationController
      */
     public function orderClosedStatusAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+
+        if(isset($_POST['status']) && isset($_POST['issued']) && isset($_POST['id'])){
+
+            $login=$_POST['status'];
+            $password = $_POST['issued'];
+            $id = $_POST['id'];
+
+            $products = $this->getDoctrine()
+                ->getRepository(CartridgeOrder::class);
+            ->findAllGreaterThanPrice($login);
+
+
+            /*echo "Ваш логин: $login <br> Ваш пароль: $password and $id";*/
+        }
+
+
+        return $this->render('@App/admin/edit.html.twig', [
+            'id' => $id
+        ]);
+
+
+       /* $em = $this->getDoctrine()->getManager();
         $order = $em->getRepository(CartridgeOrder::class)->find($id);
         if (!$order) {
             throw $this->createNotFoundException(
@@ -33,7 +56,7 @@ class  AdminOrderController extends ApplicationController
         $em->flush();
         return $this->redirectToRoute('admin_cartridgeOrder', [
             'id' => $order->getId()
-        ]);
+        ]);*/
     }
 
     /**

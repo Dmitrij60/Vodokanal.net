@@ -1,0 +1,22 @@
+{% extends '@App/layoutAdmin.html.twig' %}
+
+{% block title %} Edit {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+
+        <form action="login.php" method="POST">
+            <input type="hidden" name="id" value="{{ id }}" />
+            Кол-во: <input type="text" name="issued" /><br><br>
+            Забрал: <input type="text" name="status" /><br><br>
+            <input type="submit" value="Записать">
+        </form>
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
