@@ -32,7 +32,7 @@ class  AdminOrderController extends ApplicationController
             $id = $_POST['id'];
 
             $products = $this->getDoctrine()
-                ->getRepository(CartridgeOrder::class);
+                ->getRepository(CartridgeOrder::class)
             ->findAllGreaterThanPrice($login);
 
 
