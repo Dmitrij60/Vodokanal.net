@@ -17,9 +17,7 @@ class EditCartridgeOrderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-       $builder
-
-            ->add('status', ChoiceType::class, [
+       $builder->add('status', ChoiceType::class, [
                 'choices' => [
                     'Отпралвена' => 'Отпралвена',
                     'Изменена' => 'Изменена',

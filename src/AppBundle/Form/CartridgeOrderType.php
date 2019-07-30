@@ -42,7 +42,6 @@ class CartridgeOrderType extends AbstractType
             ->add('count', null, [
                 'label' => false,
             ]);
-
     }
     /**
      * {@inheritdoc}

@@ -12,5 +12,20 @@ use AppBundle\Entity\CartridgeOrder;
  */
 class CartridgeOrderRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function updateUserStatus($login, $password, $id)
+    {
+        $em = $this->getEntityManager();
+
+        $query = $em->createQueryBuilder();
+        $query->update('AppBundle:CartridgeOrder', 'co')
+            ->set('co.status', '?1')
+            ->set('co.issued', '?2')
+            ->where('co.id = ?3')
+            ->setParameter(1, $login)
+            ->setParameter(2, $password)
+            ->setParameter(3, $id)
+            ->getQuery()
+            ->execute();
+    }
 
 }
