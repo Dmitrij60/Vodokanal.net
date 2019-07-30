@@ -1,0 +1,22 @@
+{% extends '@App/layoutAdmin.html.twig' %}
+
+{% block title %} Grid {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <form action="AdminOrderController.php" method="POST">
+            статус: <input type="text" name="login" /><br><br>
+            кол-во: <input type="text" name="password" /><br><br>
+            кто забрал: <input type="text" name="who" /><br><br>
+
+            <input type="submit" value="Войти">
+        </form>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
+

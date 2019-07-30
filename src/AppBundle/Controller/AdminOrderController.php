@@ -5,6 +5,9 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\CartridgeOrder;
+use AppBundle\Form\CartridgeOrderType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use APY\DataGridBundle\Grid\Source\Entity;
@@ -20,9 +23,21 @@ class  AdminOrderController extends ApplicationController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function orderClosedStatusAction($id)
+    public function orderClosedStatusAction($id, Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+
+        if(isset($_POST['login']) && isset($_POST['password'])) {
+
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            $who = $_POST['who'];
+            echo "Ваш логин: $login  Ваш пароль: $password кто забрал $who";
+        }
+
+        return $this->render('@App/admin/edit.html.twig');
+
+
+        /*$em = $this->getDoctrine()->getManager();
         $order = $em->getRepository(CartridgeOrder::class)->find($id);
         if (!$order) {
             throw $this->createNotFoundException(
@@ -33,7 +48,7 @@ class  AdminOrderController extends ApplicationController
         $em->flush();
         return $this->redirectToRoute('admin_cartridgeOrder', [
             'id' => $order->getId()
-        ]);
+        ]);*/
     }
 
     /**
