@@ -1,16 +1,27 @@
 {% extends '@App/layoutAdmin.html.twig' %}
 
+
 {% block title %} Edit {% endblock %}
 
 {% block body %}
     <div class="starter-template">
 
-        <form action="login.php" method="POST">
+       <h2>Данные заявки № {{ id }}</h2> <br>
+        <hr>
+        Модель картриджа: {{ cartridgeModel }} <br>
+        Отдел: {{ department }} <br>
+        Район: {{ district }} <br>
+        Кол-во в заявке, шт: {{ count }} <br>
+
+        <hr>
+
+        <form  class="form-control" action="" method="POST">
             <input type="hidden" name="id" value="{{ id }}" />
-            Кол-во: <input type="text" name="issued" /><br><br>
-            Забрал: <input type="text" name="status" /><br><br>
+            Выдано, шт: <input type="text" name="issued" /><br><br>
+            Забрал, фио: <input type="text" name="who" /><br><br>
             <input type="submit" value="Записать">
         </form>
+
 
     </div>
 {% endblock %}
@@ -19,4 +30,6 @@
     <style>
 
     </style>
+
 {% endblock %}
+

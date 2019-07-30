@@ -79,6 +79,13 @@ class CartridgeOrder
     private $status;
 
     /**
+     * @var string
+     * @GRID\Column(title="кто забрал")
+     * @ORM\Column(name="who", type="string", length=255, nullable=true)
+     */
+    private $who;
+
+    /**
      * Get id
      *
      * @return int
@@ -254,6 +261,30 @@ class CartridgeOrder
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Get who
+     *
+     * @return string
+     */
+    public function getWho()
+    {
+        return $this->who;
+    }
+
+    /**
+     * Set who
+     *
+     * @param string $who
+     *
+     * @return CartridgeOrder
+     */
+    public function setWho($who)
+    {
+        $this->who = $who;
+
+        return $this;
     }
 }
 

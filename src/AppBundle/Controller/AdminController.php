@@ -74,40 +74,16 @@ class  AdminController extends ApplicationController
         // OR with only one value
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
-        $actions1Column = new ActionsColumn('action1', 'выдать, шт');
-        $grid->addColumn($actions1Column, 8);
-
         $actions2Column = new ActionsColumn('action2', 'изменить статус');
         $grid->addColumn($actions2Column, 10);
 
-        $plusTitle = '+ шт';
-        $plusRoute = 'plus_cartridge_order';
-        $rowPlusAction = new RowAction($plusTitle, $plusRoute);
-        $rowPlusAction->setColumn('action1');
-        $rowPlusAction -> setRouteParameters ( array ('id'));
+        $editTitle = 'Изменить статус заявки';
+        $editRoute = 'edit_cartridge_order';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action2');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
 
-        $minusTitle = '- шт';
-        $minusRoute = 'minus_cartridge_order';
-        $rowMinusAction = new RowAction($minusTitle, $minusRoute);
-        $rowMinusAction->setColumn('action1');
-        $rowMinusAction -> setRouteParameters ( array ('id'));
-
-        $closedTitle = 'Заявка отменена';
-        $closedRoute = 'closed_cartridge_order';
-        $rowClosedAction = new RowAction($closedTitle, $closedRoute);
-        $rowClosedAction->setColumn('action2');
-        $rowClosedAction -> setRouteParameters ( array ('id'));
-
-        $confirmTitle = 'Заявка выполнена';
-        $confirmRoute = 'confirm_cartridge_order';
-        $rowConfirmAction = new RowAction($confirmTitle, $confirmRoute);
-        $rowConfirmAction->setColumn('action2');
-        $rowConfirmAction -> setRouteParameters ( array ('id'));
-
-        $grid->addRowAction($rowPlusAction);
-        $grid->addRowAction($rowMinusAction);
-        $grid->addRowAction($rowClosedAction);
-        $grid->addRowAction($rowConfirmAction);
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [
@@ -133,23 +109,16 @@ class  AdminController extends ApplicationController
         $grid->setDefaultOrder('id', 'desc');
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
-        $actions2Column = new ActionsColumn('action1', 'изменить статус');
-        $grid->addColumn($actions2Column, 9);
+        $responsible = new ActionsColumn('action2', 'ответственный');
+        $grid->addColumn($responsible, 8);
 
-        $closedTitle = 'Заявка отменена';
-        $closedRoute = 'closed_cartridge_order';
-        $rowClosedAction = new RowAction($closedTitle, $closedRoute);
-        $rowClosedAction->setColumn('action1');
-        $rowClosedAction -> setRouteParameters ( array ('id'));
-
-        $confirmTitle = 'Заявка выполнена';
-        $confirmRoute = 'confirm_cartridge_order';
-        $rowConfirmAction = new RowAction($confirmTitle, $confirmRoute);
-        $rowConfirmAction->setColumn('action1');
-        $rowConfirmAction -> setRouteParameters ( array ('id'));
-
-        $grid->addRowAction($rowClosedAction);
-        $grid->addRowAction($rowConfirmAction);
+        $editTitle = 'взять заявку';
+        $editRoute = 'edit_cartridge_order';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action2');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+        
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [
@@ -201,7 +170,25 @@ class  AdminController extends ApplicationController
         $grid->setDefaultOrder('id', 'desc');
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
+        $responsible = new ActionsColumn('action2', 'забрать заявку');
+        $grid->addColumn($responsible, 9);
 
+        $responsibleTitle = 'взять заявку';
+        $responsibleRoute = 'edit_responsible_consultation_order';
+        $rowEditAction = new RowAction($responsibleTitle, $responsibleRoute);
+        $rowEditAction->setColumn('action2');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        $responsible = new ActionsColumn('action3', 'изменить статус');
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'изменить статус';
+        $editRoute = 'edit_responsible_consultation_order';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [

@@ -51,6 +51,13 @@ class ConsultationOrder
     private $contact;
 
     /**
+     * @var \DateTime
+     * @GRID\Column(title="подана", format="d.m.y H:i:s")
+     * @ORM\Column(name="created", type="datetime", nullable=true)
+     */
+    private $created;
+
+    /**
      * @var string
      * @GRID\Column(title="статус")
      * @ORM\Column(name="status", type="string", length=255, nullable=true)
@@ -58,11 +65,11 @@ class ConsultationOrder
     private $status;
 
     /**
-     * @var \DateTime
-     * @GRID\Column(title="подана", format="d.m.y H:i:s")
-     * @ORM\Column(name="created", type="datetime", nullable=true)
+     * @var string
+     * @GRID\Column(title="ответственный")
+     * @ORM\Column(name="responsible", type="string", length=255, nullable=true)
      */
-    private $created;
+    private $responsible;
 
     public function __construct()
     {
@@ -177,6 +184,30 @@ class ConsultationOrder
     }
 
     /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return ConsultationOrder
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
      * Set status
      *
      * @param string $status
@@ -201,27 +232,27 @@ class ConsultationOrder
     }
 
     /**
-     * Set created
+     * Set responsible
      *
-     * @param \DateTime $created
+     * @param string $responsible
      *
      * @return ConsultationOrder
      */
-    public function setCreated($created)
+    public function setResponsible($responsible)
     {
-        $this->created = $created;
+        $this->responsible = $responsible;
 
         return $this;
     }
 
     /**
-     * Get created
+     * Get responsible
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreated()
+    public function getResponsible()
     {
-        return $this->created;
+        return $this->responsible;
     }
 }
 
