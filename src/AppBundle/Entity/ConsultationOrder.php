@@ -38,7 +38,7 @@ class ConsultationOrder
 
     /**
      * @var string
-     * @GRID\Column(title="причина")
+     * @GRID\Column(title="причина", size="300")
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
     private $reason;
@@ -66,7 +66,7 @@ class ConsultationOrder
 
     /**
      * @var string
-     * @GRID\Column(title="ответственный")
+     * @GRID\Column(title="ответственный", searchOnClick="true")
      * @ORM\Column(name="responsible", type="string", length=255, nullable=true)
      */
     private $responsible;

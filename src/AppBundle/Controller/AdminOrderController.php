@@ -71,6 +71,11 @@ class  AdminOrderController extends ApplicationController
         $responsible = $edit->getResponsible();
         $user = $this->getUser();
 
+        /*$reason = substr($reason, 0, 50);
+        $reason = rtrim($reason, "!,.-");
+        $reason = substr($reason, 0, strrpos($reason, ' '));
+        $reason = $reason."...";*/
+
         if($responsible == $user) {
             if (isset($_POST['status']) && isset($_POST['id'])) {
                 $status = $_POST['status'];
