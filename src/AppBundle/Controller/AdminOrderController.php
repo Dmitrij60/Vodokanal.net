@@ -61,38 +61,43 @@ class  AdminOrderController extends ApplicationController
     public function orderEditConsultationStatusAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $status = $em->getRepository(ConsultationOrder::class)->find($id);
-        $cartridgeModel = $status->getCartridgeModel();
-        $district = $status->getDistrict();
-        $department = $status->getDepartment();
-        $count = $status->getCount();
+        $edit = $em->getRepository(ConsultationOrder::class)->find($id);
+        $district = $edit->getDistrict();
+        $department = $edit->getDepartment();
+        $reason = $edit->getReason();
+        $contact = $edit->getContact();
+        $created = $edit->getCreated();
+        $status = $edit->getStatus();
+        $responsible = $edit->getResponsible();
 
-        if(isset($_POST['who']) && isset($_POST['issued']) && isset($_POST['id'])){
-            $who=$_POST['who'];
-            $issued = $_POST['issued'];
+        if(isset($_POST['status']) && isset($_POST['id'])){
+            $status=$_POST['status'];
             $id = $_POST['id'];
-            if (!$status) {
+
+            if (!$edit) {
                 throw $this->createNotFoundException(
                     'No order found for id '.$id
                 );
             }
-            $status->setIssued($issued);
-            $status->setWho($who);
+            $edit->setStatus($status);
             $em->flush();
             $this->addFlash('success', 'Статус заявки изменен');
-            return $this->redirectToRoute('admin_cartridgeOrder');
+            return $this->redirectToRoute('admin_consultationOrder');
         }
-        return $this->render('@App/admin/edit.html.twig', [
+        return $this->render('@App/admin/editConsultation.html.twig', [
             'id' => $id,
-            'cartridgeModel' => $cartridgeModel,
             'district' => $district,
             'department' => $department,
-            'count' => $count,
+            'reason' => $reason,
+            'contact' => $contact,
+            'created' => $created,
+            'status' => $status,
+            'responsible' => $responsible,
         ]);
     }
 
     /**
-     * @Route("/edit_consultation_order_responsible/{id}", name="edit_responsible_consultation_order")
+     * @Route("/_consultation_order_responsible/{id}", name="edit_responsible_consultation_order")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -100,6 +105,7 @@ class  AdminOrderController extends ApplicationController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $responsible = $entityManager->getRepository(ConsultationOrder::class)->find($id);
+        $user = $this->getUser();
 
         if (!$responsible) {
             throw $this->createNotFoundException(
@@ -107,13 +113,16 @@ class  AdminOrderController extends ApplicationController
             );
         }
         $param = $responsible->getResponsible();
-        if($param == !null){
-            $this->addFlash('success','Вы не можете принять заявку, ее принял другой сотрудник');
-        }else {
-            $user = $this->getUser();
+        if($param == !null && $param != $user){
+            $this->addFlash('warning','Вы не можете взять заявку, ее уже взял другой сотрудник!');
+        }else if($param == $user){
             $responsible->setResponsible($user);
             $entityManager->flush();
-            $this->addFlash('success','Вы приняли заявку');
+            $this->addFlash('success','Вы  уже приняли заявку');
+        }else {
+            $responsible->setResponsible($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Вы приняли заявку');
         }
 
         return $this->redirectToRoute('admin_consultationOrder', [

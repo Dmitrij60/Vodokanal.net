@@ -184,7 +184,7 @@ class  AdminController extends ApplicationController
         $grid->addColumn($responsible, 10);
 
         $editTitle = 'изменить статус';
-        $editRoute = 'edit_responsible_consultation_order';
+        $editRoute = 'edit_consultation_order';
         $rowEditAction = new RowAction($editTitle, $editRoute);
         $rowEditAction->setColumn('action3');
         $rowEditAction -> setRouteParameters ( array ('id'));

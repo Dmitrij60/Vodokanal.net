@@ -1,0 +1,51 @@
+{% extends '@App/layoutAdmin.html.twig' %}
+
+
+{% block title %} Edit {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+
+       <h2>Данные заявки № {{ id }}</h2> <br>
+        <hr>
+
+        <b>Отдел:</b> {{ department }} <br>
+        <b>Район:</b> {{ district }} <br>
+        <b>Причина:</b> {{ reason }} <br>
+        <b>Контакты(моб., TeamViewer):</b> {{ contact }} <br>
+        <b>Заявка подана:</b> {{ created |date('d.m.y h:m') }} <br>
+        <b>Текущий статус заявки:</b> {{ status }} <br>
+        <b>Ответственный:</b> {{ responsible }} <br>
+
+        <hr>
+
+        <form   action="" method="POST">
+            <input type="hidden" name="id" value="{{ id }}" />
+            Изменить статус заявки:
+            <select class="form-control" name="status">
+                <option>Заявка выполнена</option>
+                <option>Заявка передана другому сотруднику</option>
+                <option>Заявка отменена</option>
+            </select>
+            <input type="submit" value="Записать">
+        </form>
+
+
+    </div>
+
+
+
+    {% block javascripts %}
+
+    {% endblock %}
+{% endblock %}
+
+
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+
+{% endblock %}
+

@@ -4,15 +4,24 @@
 
 
 {% block body %}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
     <div class="starter-template">
 <h2>{{ param }}</h2>
 
-        <hr>
 
-        {{ grid(grid, _self) }}
 
         <hr>
-        
+
+         {{ grid(grid, _self) }}
+        <hr>
+
 
        {# {{ grid_search(grid) }}#}
         {% block grid_filters %}{% endblock %}
