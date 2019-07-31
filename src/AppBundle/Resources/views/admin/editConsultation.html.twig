@@ -6,12 +6,11 @@
 {% block body %}
     <div class="starter-template">
 
-       <h2>Данные заявки № {{ id }}</h2> <br>
+        <h2>Данные заявки № {{ id }}</h2> <br>
         <hr>
-
+        <b>Причина:</b> {{ reason }} <br>
         <b>Отдел:</b> {{ department }} <br>
         <b>Район:</b> {{ district }} <br>
-        <b>Причина:</b> {{ reason }} <br>
         <b>Контакты(моб., TeamViewer):</b> {{ contact }} <br>
         <b>Заявка подана:</b> {{ created |date('d.m.y h:m') }} <br>
         <b>Текущий статус заявки:</b> {{ status }} <br>
@@ -19,23 +18,41 @@
 
         <hr>
 
-        <form   action="" method="POST">
-            <input type="hidden" name="id" value="{{ id }}" />
+        <form method="POST" action="#">
+            <input type="hidden" name="id" value="{{ id }}"/>
             Изменить статус заявки:
-            <select class="form-control" name="status">
-                <option>Заявка выполнена</option>
-                <option>Заявка передана другому сотруднику</option>
-                <option>Заявка отменена</option>
+            <select name="status" class="form-control" aria-required="true" onChange="Selected(this)">
+                <option value="Заявка выполнена" selected>Заявка выполнена</option>
+                <option value="Заявка отменена">Заявка отменена</option>
+                <option value="Передана другому сотруднику">Передать другому сотруднику</option>
             </select>
+            <br>
+            <label id="Label1" style='display: none;'>Укажите сотрудника для передачи.</label>
+            <select id="Label2" type="text" class="form-control" name="responsible" style='display: none;'>
+                <option type="hidden" value="{{ app.user.username }}" selected></option>
+                <option value="Буков">Буков</option>
+                <option value="Косинов">Косинов</option>
+                <option value="Барбашин">Барбашин</option>
+            </select>
+
             <input type="submit" value="Записать">
         </form>
-
-
     </div>
 
 
 
     {% block javascripts %}
+        <script>function Selected(a) {
+                var label = a.value;
+                if (label === "Передана другому сотруднику") {
+                    document.getElementById("Label1").style.display = 'block';
+                    document.getElementById("Label2").style.display = 'block';
+                } else {
+                    document.getElementById("Label1").style.display = 'none';
+                    document.getElementById("Label2").style.display = 'none';
+                }
+            }
+        </script>
 
     {% endblock %}
 {% endblock %}

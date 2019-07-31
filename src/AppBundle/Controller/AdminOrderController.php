@@ -69,31 +69,44 @@ class  AdminOrderController extends ApplicationController
         $created = $edit->getCreated();
         $status = $edit->getStatus();
         $responsible = $edit->getResponsible();
+        $user = $this->getUser();
 
-        if(isset($_POST['status']) && isset($_POST['id'])){
-            $status=$_POST['status'];
-            $id = $_POST['id'];
+        if($responsible == $user) {
+            if (isset($_POST['status']) && isset($_POST['id'])) {
+                $status = $_POST['status'];
+                $id = $_POST['id'];
 
-            if (!$edit) {
-                throw $this->createNotFoundException(
-                    'No order found for id '.$id
-                );
+                if (!$edit) {
+                    throw $this->createNotFoundException(
+                        'No order found for id ' . $id
+                    );
+                }
+
+                if (isset($_POST['responsible'])) {
+                    $responsible = $_POST['responsible'];
+                    $edit->setResponsible($responsible);
+                    $em->flush();
+                }
+
+                $edit->setStatus($status);
+                $em->flush();
+                $this->addFlash('success', 'Статус заявки изменен');
+                return $this->redirectToRoute('admin_consultationOrder');
             }
-            $edit->setStatus($status);
-            $em->flush();
-            $this->addFlash('success', 'Статус заявки изменен');
+            return $this->render('@App/admin/editConsultation.html.twig', [
+                'id' => $id,
+                'district' => $district,
+                'department' => $department,
+                'reason' => $reason,
+                'contact' => $contact,
+                'created' => $created,
+                'status' => $status,
+                'responsible' => $responsible,
+            ]);
+        }else{
+            $this->addFlash('warning','Вы не можете редактировать эту заявку, за нее отвечает другой сотрудник');
             return $this->redirectToRoute('admin_consultationOrder');
         }
-        return $this->render('@App/admin/editConsultation.html.twig', [
-            'id' => $id,
-            'district' => $district,
-            'department' => $department,
-            'reason' => $reason,
-            'contact' => $contact,
-            'created' => $created,
-            'status' => $status,
-            'responsible' => $responsible,
-        ]);
     }
 
     /**
