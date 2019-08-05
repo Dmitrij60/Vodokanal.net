@@ -29,6 +29,7 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
+        ROLE_AUP:         ROLE_AUP
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
@@ -55,8 +56,8 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
         - { path: ^/register, role: ROLE_ADMIN }
-        - { path: ^/service_list, role: ROLE_USER }
-        - { path: ^/repair_order, role: ROLE_USER }
+        - { path: ^/service_list, role: ROLE_USER}
+        - { path: ^/repair_order, role: ROLE_USER}
         - { path: ^/departure_order, role: ROLE_USER }
-        - { path: ^/consultation_order, role: ROLE_USER }
+        - { path: ^/consultation_order, role: [ROLE_AUP, ROLE_USER]}
         - { path: ^/cartridge_order, role: ROLE_USER }

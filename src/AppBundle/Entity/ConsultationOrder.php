@@ -24,21 +24,21 @@ class ConsultationOrder
 
     /**
      * @var string
-     * @GRID\Column(title="район")
+     * @GRID\Column(title="р-н/сотр.")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;
 
     /**
      * @var string
-     * @GRID\Column(title="отдел")
+     * @GRID\Column(title="отдел", searchOnClick="true")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
 
     /**
      * @var string
-     * @GRID\Column(title="причина", size="300")
+     * @GRID\Column(title="причина", size="300", searchOnClick="true")
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
     private $reason;

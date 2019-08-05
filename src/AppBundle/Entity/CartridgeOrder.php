@@ -24,14 +24,14 @@ class CartridgeOrder
 
     /**
      * @var string
-     *@GRID\Column(title="модель картриджа")
+     *@GRID\Column(title="модель картриджа", searchOnClick="true")
      * @ORM\Column(name="cartridgeModel", type="string", length=255, nullable=true)
      */
     private $cartridgeModel;
 
     /**
      * @var string
-     *@GRID\Column(title="район")
+     *@GRID\Column(title="район", searchOnClick="true")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;
@@ -45,7 +45,7 @@ class CartridgeOrder
 
     /**
      * @var string
-     *@GRID\Column(title="отдел")
+     *@GRID\Column(title="отдел", searchOnClick="true")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
@@ -73,7 +73,7 @@ class CartridgeOrder
 
     /**
      * @var string
-     *@GRID\Column(title="статус заявки")
+     *@GRID\Column(title="статус заявки", searchOnClick="true")
      * @ORM\Column(name="status", type="string", length=255, nullable=true)
      */
     private $status;
