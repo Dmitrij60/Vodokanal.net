@@ -144,6 +144,25 @@ class  AdminController extends ApplicationController
         $grid->setDefaultOrder('id', 'desc');
         $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
 
+        $responsible = new ActionsColumn('action2', 'забрать заявку');
+        $grid->addColumn($responsible, 9);
+
+        $responsibleTitle = 'взять заявку';
+        $responsibleRoute = 'edit_responsible_departure_order';
+        $rowEditAction = new RowAction($responsibleTitle, $responsibleRoute);
+        $rowEditAction->setColumn('action2');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        $responsible = new ActionsColumn('action3', 'изменить статус');
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'изменить статус';
+        $editRoute = 'edit_departure_order';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
 
 
         // Return the response of the grid to the template
