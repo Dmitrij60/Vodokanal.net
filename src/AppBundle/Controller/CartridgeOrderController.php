@@ -37,13 +37,15 @@ class CartridgeOrderController extends ApplicationController
             $em = $this->getDoctrine()->getManager();
             $em->persist($order);
             $em->flush();
-            $this->addFlash('success', 'Заявка добавлена');
+            $A = $_SERVER['AUTH_USER'];
+
+            $this->addFlash('success', 'Заявка добавлена'.$A);
             //Редирект
-           return $this->redirectToRoute('service_list');
+           return $this->redirectToRoute('cartridge_order');
         }
 
         return $this->render('@App/cartridges/order.html.twig',[
-            'orderForm' => $form->createView()
+            'orderForm' => $form->createView(),
         ]);
     }
 

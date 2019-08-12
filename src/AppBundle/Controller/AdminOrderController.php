@@ -147,6 +147,4 @@ class  AdminOrderController extends ApplicationController
             'id' => $responsible->getId()
         ]);
     }
-
-
 }
