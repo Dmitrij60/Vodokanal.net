@@ -22,24 +22,26 @@ class DefaultController extends ApplicationController
     }
 
     /**
-     * @Route("/", name="homepageUser")
+     * @Route("/pageAdm", name="homepageAdm")
      */
-    public function indexUserAction(Request $request)
+    public function indexAdmAction(Request $request)
     {
         $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
 
-        return $this->render('@App/default/index.html.twig', [
+        return $this->render('@App/default/indexAdm.html.twig', [
             'cartridges' => $cartridges
         ]);
     }
 
     /**
-     * @Route("/feedback", name="feedback")
+     * @Route("/pageUsr", name="homepageUsr")
      */
-    public function feedbackAction()
+    public function indexUsrAction(Request $request)
     {
-        return $this->render('@App/default/feedback.html.twig');
+        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
 
+        return $this->render('@App/default/indexUsr.html.twig', [
+            'cartridges' => $cartridges
+        ]);
     }
-
 }

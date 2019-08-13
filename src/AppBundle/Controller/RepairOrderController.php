@@ -35,7 +35,7 @@ class RepairOrderController extends ApplicationController
             $em->flush();
             $this->addFlash('success', 'Заявка добавлена');
             //Редирект
-            return $this->redirectToRoute('service_list');
+            return $this->redirectToRoute('repair_order');
         }
 
         return $this->render('@App/repair/order.html.twig', [

@@ -15,14 +15,14 @@ class  AdminController extends ApplicationController
      * @Route("/admin", name="admin_home")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+   /* public function indexAction()
     {
         $param = 'hello admin';
 
         return $this->render('@App/admin/index.html.twig', [
            'param' => $param,
         ]);
-    }
+    }*/
 
     /**
      * @Route("/admin_grid", name="admin_grid")

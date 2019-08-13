@@ -34,7 +34,7 @@ class ConsultationOrderController extends ApplicationController
             $em->persist($order);
             $em->flush();
             $this->addFlash('success', 'Заявка добавлена');
-            return $this->redirectToRoute('service_list');
+            return $this->redirectToRoute('consultation_order');
         }
         return $this->render('@App/consultation/order.html.twig', [
             'orderForm' => $form->createView()
@@ -46,7 +46,7 @@ class ConsultationOrderController extends ApplicationController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function order2Action(Request $request)
+   /* public function order2Action(Request $request)
     {
         $form = $this->createForm(ConsultationOrderType::class);
         $form->add('Добавить заявку', SubmitType::class);
@@ -63,6 +63,6 @@ class ConsultationOrderController extends ApplicationController
         return $this->render('@App/consultation/order.html.twig', [
             'orderForm' => $form->createView()
         ]);
-    }
+    }*/
 
 }
