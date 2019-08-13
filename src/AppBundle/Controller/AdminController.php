@@ -215,4 +215,28 @@ class  AdminController extends ApplicationController
         ]);
     }
 
+    /**
+     * @Route("/adminImprove", name="admin_improve")
+     */
+    public function gridImproveAction()
+    {
+        $text = 'Предложения по улучшению';
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:Improve');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+        $grid->setDefaultOrder('id', 'desc');
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'param' => $text
+        ]);
+    }
+
 }

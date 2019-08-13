@@ -22,7 +22,7 @@
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
             }
-        }stigmata
+        }
     </style>
     <!-- Custom styles for this template -->
     <link href="{{ asset('bundles/app/css/style.css') }}" rel="stylesheet">
@@ -60,7 +60,7 @@
                     <a class="dropdown-item" href="{{ path('admin_repairOrder') }}">Заявка на ремонт</a>
                     <a class="dropdown-item" href="{{ path('admin_departureOrder') }}">Заявка на выезд</a>
                     <a class="dropdown-item" href="{{ path('admin_consultationOrder') }}">Заявка на консультацию</a>
-                    <a class="dropdown-item" href="#">Другое</a>
+                    <a class="dropdown-item" href="{{ path('admin_improve')}}">Предложения по улучшению</a>
                 </div>
             </li>
             <li class="nav-item">

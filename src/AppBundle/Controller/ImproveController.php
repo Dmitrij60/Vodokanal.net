@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Form\DepartureOrderType;
+use AppBundle\Form\ImproveType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +23,7 @@ class ImproveController extends ApplicationController
      */
     public function improveAction(Request $request)
     {
-        $form = $this->createForm(DepartureOrderType::class);
+        $form = $this->createForm(ImproveType::class);
         $form->add('Отправить заявку', SubmitType::class);
         $form->handleRequest($request);
 
