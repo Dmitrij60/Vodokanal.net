@@ -1,0 +1,28 @@
+{% extends '@App/layoutUser.html.twig' %}
+
+{% block title %} Cartridges {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Помогите нам сделать сервис удобнее и пишите Ваши предложения сюда:</h1>
+        <hr>
+
+        {{ form_start(orderForm) }}
+
+        {{ form_row(orderForm.district, {attr: { value : app.user.username } }) }}
+        <br>
+
+        {{ form_label(orderForm.reason, 'Укажите причину заявки на выезд') }}
+        {{ form_row(orderForm.reason) }}
+        <br>
+
+        {{ form_end(orderForm) }}
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
