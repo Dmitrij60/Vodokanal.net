@@ -17,8 +17,10 @@
 
         <form   action="" method="POST">
             <input type="hidden" name="id" value="{{ id }}" />
-            Выдано, шт: <input type="text" name="issued" class="form-control" /><br><br>
-            Забрал, фио: <input type="text" name="who" class="form-control" /><br><br>
+            Выдано, шт: <input type="text" value="{{ issued }}" name="issued" class="form-control" /><br><br>
+            Забрал, фио: <input type="text" value="{{ who }}" name="who" class="form-control" /><br><br>
+
+            <br>
             <input type="submit" value="Записать">
         </form>
 

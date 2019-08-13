@@ -50,6 +50,15 @@ class DepartureOrder
      */
     private $created;
 
+
+    /**
+     * @var string
+     * @GRID\Column(title="ответственный", searchOnClick="true")
+     * @ORM\Column(name="responsible", type="string", length=255, nullable=true)
+     */
+    private $responsible;
+
+
     public function __construct()
     {
         $this->created = new \DateTime();
@@ -162,5 +171,30 @@ class DepartureOrder
     {
         return $this->created;
     }
+
+    /**
+     * Set responsible
+     *
+     * @param string $responsible
+     *
+     * @return ConsultationOrder
+     */
+    public function setResponsible($responsible)
+    {
+        $this->responsible = $responsible;
+
+        return $this;
+    }
+
+    /**
+     * Get responsible
+     *
+     * @return string
+     */
+    public function getResponsible()
+    {
+        return $this->responsible;
+    }
+
 }
 

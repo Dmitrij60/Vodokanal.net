@@ -2,6 +2,7 @@
 namespace AppBundle\Controller;
 use AppBundle\Entity\CartridgeOrder;
 use AppBundle\Entity\ConsultationOrder;
+use AppBundle\Entity\DepartureOrder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use APY\DataGridBundle\Grid\Source\Entity;
@@ -26,6 +27,8 @@ class  AdminOrderController extends ApplicationController
         $district = $status->getDistrict();
         $department = $status->getDepartment();
         $count = $status->getCount();
+        $issued = $status->getIssued();
+        $who = $status->getWho();
 
         $A = gethostbyaddr($_SERVER['REMOTE_ADDR']);//TODO:remote addr
 
@@ -44,12 +47,14 @@ class  AdminOrderController extends ApplicationController
             $this->addFlash('success', 'Статус заявки изменен');
             return $this->redirectToRoute('admin_cartridgeOrder');
         }
-        return $this->render('@App/admin/edit.html.twig', [
+        return $this->render('@App/admin/editCartridge.html.twig', [
             'id' => $id,
             'cartridgeModel' => $cartridgeModel,
             'district' => $district,
             'department' => $department,
             'count' => $count,
+            'issued' => $issued,
+            'who' => $who
         ]);
     }
 
@@ -144,6 +149,98 @@ class  AdminOrderController extends ApplicationController
         }
 
         return $this->redirectToRoute('admin_consultationOrder', [
+            'id' => $responsible->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/edit_departure_order_status/{id}", name="edit_departure_order")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function orderEditDepartureStatusAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $edit = $em->getRepository(DepartureOrder::class)->find($id);
+        $district = $edit->getDistrict();
+        $reason = $edit->getReason();
+        $created = $edit->getCreated();
+        $status = $edit->getStatus();
+        $responsible = $edit->getResponsible();
+        $user = $this->getUser();
+
+        /*$reason = substr($reason, 0, 50);
+        $reason = rtrim($reason, "!,.-");
+        $reason = substr($reason, 0, strrpos($reason, ' '));
+        $reason = $reason."...";*/
+
+        if($responsible == $user) {
+            if (isset($_POST['status']) && isset($_POST['id'])) {
+                $status = $_POST['status'];
+                $id = $_POST['id'];
+
+                if (!$edit) {
+                    throw $this->createNotFoundException(
+                        'No order found for id ' . $id
+                    );
+                }
+
+                if (isset($_POST['responsible'])) {
+                    $responsible = $_POST['responsible'];
+                    $edit->setResponsible($responsible);
+                    $em->flush();
+                }
+
+                $edit->setStatus($status);
+                $em->flush();
+                $this->addFlash('success', 'Статус заявки изменен');
+                return $this->redirectToRoute('admin_departureOrder');
+            }
+            return $this->render('@App/admin/editDeparture.html.twig', [
+                'id' => $id,
+                'district' => $district,
+                'reason' => $reason,
+                'created' => $created,
+                'status' => $status,
+                'responsible' => $responsible,
+            ]);
+        }else{
+            $this->addFlash('warning','Вы не можете редактировать эту заявку, за нее отвечает другой сотрудник');
+            return $this->redirectToRoute('admin_consultationOrder');
+        }
+    }
+
+
+    /**
+     * @Route("/_departure_order_responsible/{id}", name="edit_responsible_departure_order")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function orderEditDepartureResponsibleAction($id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $responsible = $entityManager->getRepository(DepartureOrder::class)->find($id);
+        $user = $this->getUser();
+
+        if (!$responsible) {
+            throw $this->createNotFoundException(
+                'No departure found for id '.$id
+            );
+        }
+        $param = $responsible->getResponsible();
+        if($param == !null && $param != $user){
+            $this->addFlash('warning','Вы не можете взять заявку, ее уже взял другой сотрудник!');
+        }else if($param == $user){
+            $responsible->setResponsible($user);
+            $entityManager->flush();
+            $this->addFlash('success','Вы  уже приняли заявку');
+        }else {
+            $responsible->setResponsible($user);
+            $entityManager->flush();
+            $this->addFlash('success', 'Вы приняли заявку');
+        }
+
+        return $this->redirectToRoute('admin_departureOrder', [
             'id' => $responsible->getId()
         ]);
     }

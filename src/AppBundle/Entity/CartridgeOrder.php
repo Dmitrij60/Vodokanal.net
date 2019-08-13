@@ -71,12 +71,6 @@ class CartridgeOrder
      */
     private $issued;
 
-    /**
-     * @var string
-     *@GRID\Column(title="статус заявки", searchOnClick="true")
-     * @ORM\Column(name="status", type="string", length=255, nullable=true)
-     */
-    private $status;
 
     /**
      * @var string
@@ -239,29 +233,7 @@ class CartridgeOrder
         return $this->issued;
     }
 
-    /**
-     * Set status
-     *
-     * @param integer $status
-     *
-     * @return CartridgeOrder
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
 
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Get who

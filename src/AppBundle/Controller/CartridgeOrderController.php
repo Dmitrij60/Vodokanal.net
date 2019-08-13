@@ -67,7 +67,7 @@ class CartridgeOrderController extends ApplicationController
             return $this->redirectToRoute('admin_cartridgeOrder');
         }
 
-        return $this->render('@App/cartridges/edit.html.twig',[
+        return $this->render('@App/cartridges/editCartridge.html.twig',[
             'orderForm' => $form->createView()
         ]);
 
