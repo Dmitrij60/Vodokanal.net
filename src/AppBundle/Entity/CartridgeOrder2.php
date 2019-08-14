@@ -1,5 +1,5 @@
 <?php
-
+/*
 
 namespace AppBundle\Entity;
 
@@ -72,4 +72,4 @@ class CartridgeOrder2
     {
         $this->isAttending = $isAttending;
     }
-}
+}*/

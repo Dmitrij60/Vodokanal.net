@@ -32,7 +32,7 @@ class DepartureOrderController extends ApplicationController
             $em->persist($order);
             $em->flush();
             $this->addFlash('success', 'Заявка добавлена');
-            return $this->redirectToRoute('service_list');
+            return $this->redirectToRoute('departure_order');
         }
         return $this->render('@App/departure/order.html.twig', [
             'orderForm' => $form->createView()

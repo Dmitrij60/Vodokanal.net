@@ -33,7 +33,7 @@ class ImproveController extends ApplicationController
             $em->persist($order);
             $em->flush();
             $this->addFlash('success', 'Заявка добавлена');
-            return $this->redirectToRoute('service_list');
+            return $this->redirectToRoute('improve');
         }
         return $this->render('@App/improve/index.html.twig', [
             'orderForm' => $form->createView()
