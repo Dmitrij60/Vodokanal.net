@@ -22,6 +22,10 @@ class DepartureOrderController extends ApplicationController
      */
     public function orderAction(Request $request)
     {
+
+
+
+        //echo date('Y-m-d');
         $form = $this->createForm(DepartureOrderType::class);
         $form->add('Отправить заявку', SubmitType::class);
         $form->handleRequest($request);
