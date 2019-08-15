@@ -44,4 +44,16 @@ class DefaultController extends ApplicationController
             'cartridges' => $cartridges
         ]);
     }
+
+    /**
+     * @Route("/pageAup", name="homepageAup")
+     */
+    public function indexAupAction(Request $request)
+    {
+        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+
+        return $this->render('@App/default/indexAup.html.twig', [
+            'cartridges' => $cartridges
+        ]);
+    }
 }
