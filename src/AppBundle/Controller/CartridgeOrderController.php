@@ -6,6 +6,7 @@ use AppBundle\Form\CartridgeOrderType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use  AppBundle\Security\LoginSuccessHandler;
 
 class CartridgeOrderController extends ApplicationController
 {
@@ -16,6 +17,8 @@ class CartridgeOrderController extends ApplicationController
      */
     public function orderAction(Request $request)
     {
+        $template = $this->roleWithTemplate();
+
         $form = $this->createForm(CartridgeOrderType::class);
         $form->add('Отправить заявку', SubmitType::class);
 
@@ -34,7 +37,9 @@ class CartridgeOrderController extends ApplicationController
         }
 
         return $this->render('@App/cartridges/order.html.twig',[
+
             'orderForm' => $form->createView(),
+            'template' => $template
         ]);
     }
 }

@@ -1,42 +1,41 @@
 <?php
 
-
 namespace AppBundle\Controller;
 
-
-use AppBundle\Form\DepartureOrderType;
+use AppBundle\Form\AvtoOrderType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DepartureOrderController extends ApplicationController
+class AvtoOrderController extends ApplicationController
 {
-    public function indexAction()
-    {
-
-    }
-
     /**
-     * @Route("departure_order", name="departure_order")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/avto_order", name="avto_order")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function orderAction(Request $request)
     {
         $template = $this->roleWithTemplate();
 
-        $form = $this->createForm(DepartureOrderType::class);
+        $form = $this->createForm(AvtoOrderType::class);
         $form->add('Отправить заявку', SubmitType::class);
+
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()){
             $order = $form->getData();
+            //Сохранение сущности в бд
             $em = $this->getDoctrine()->getManager();
             $em->persist($order);
             $em->flush();
+
             $this->addFlash('success', 'Заявка добавлена');
-            return $this->redirectToRoute('departure_order');
+            //Редирект
+           return $this->redirectToRoute('avto_order');
         }
-        return $this->render('@App/departure/order.html.twig', [
+
+        return $this->render('@App/avto/order.html.twig',[
             'orderForm' => $form->createView(),
             'template' => $template
         ]);

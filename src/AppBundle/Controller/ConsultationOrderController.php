@@ -12,11 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ConsultationOrderController extends ApplicationController
 {
-    public function indexAction()
-    {
-
-    }
-
     /**
      * @Route("consultation_order", name="consultation_order")
      * @param Request $request
@@ -24,6 +19,8 @@ class ConsultationOrderController extends ApplicationController
      */
     public function orderAction(Request $request)
     {
+        $template = $this->roleWithTemplate();
+
         $form = $this->createForm(ConsultationOrderType::class);
         $form->add('Добавить заявку', SubmitType::class);
         $form->handleRequest($request);
@@ -37,7 +34,8 @@ class ConsultationOrderController extends ApplicationController
             return $this->redirectToRoute('consultation_order');
         }
         return $this->render('@App/consultation/order.html.twig', [
-            'orderForm' => $form->createView()
+            'orderForm' => $form->createView(),
+            'template' => $template,
         ]);
     }
 

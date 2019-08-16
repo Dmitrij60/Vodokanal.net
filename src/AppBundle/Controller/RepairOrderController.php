@@ -11,11 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RepairOrderController extends ApplicationController
 {
-    public function indexAction()
-    {
-
-    }
-
     /**
      * @Route("repair_order", name="repair_order")
      * @param Request $request
@@ -23,6 +18,8 @@ class RepairOrderController extends ApplicationController
      */
     public function orderAction(Request $request)
     {
+        $template = $this->roleWithTemplate();
+
         $form = $this->createForm(RepairOrderType::class);
         $form->add('Отправить заявку', SubmitType::class);
         $form->handleRequest($request);
@@ -39,9 +36,8 @@ class RepairOrderController extends ApplicationController
         }
 
         return $this->render('@App/repair/order.html.twig', [
-            'orderForm' => $form->createView()
+            'orderForm' => $form->createView(),
+            'template' => $template
         ]);
-
     }
-
 }

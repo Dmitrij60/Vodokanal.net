@@ -12,17 +12,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ImproveController extends ApplicationController
 {
-    public function indexAction()
-    {
-
-    }
-
     /**
      * @Route("improve", name="improve")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function improveAction(Request $request)
     {
+        $template = $this->roleWithTemplate();
+
         $form = $this->createForm(ImproveType::class);
         $form->add('Отправить заявку', SubmitType::class);
         $form->handleRequest($request);
@@ -36,7 +33,8 @@ class ImproveController extends ApplicationController
             return $this->redirectToRoute('improve');
         }
         return $this->render('@App/improve/index.html.twig', [
-            'orderForm' => $form->createView()
+            'orderForm' => $form->createView(),
+            'template' => $template
         ]);
     }
 }

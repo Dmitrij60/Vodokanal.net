@@ -1,0 +1,37 @@
+{% extends '@App/layoutAdminAvto.html.twig' %}
+
+
+{% block title %} Edit {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+
+       <h2>Данные заявки № {{ id }}</h2> <br>
+        <hr>
+        Модель картриджа: {{ cartridgeModel }} <br>
+        Отдел: {{ department }} <br>
+        Район: {{ district }} <br>
+        Кол-во в заявке, шт: {{ count }} <br>
+
+        <hr>
+
+        <form   action="" method="POST">
+            <input type="hidden" name="id" value="{{ id }}" />
+            Выдано, шт: <input type="text" value="{{ issued }}" name="issued" class="form-control" /><br><br>
+            Забрал, фио: <input type="text" value="{{ who }}" name="who" class="form-control" /><br><br>
+
+            <br>
+            <input type="submit" value="Записать">
+        </form>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+
+{% endblock %}
+

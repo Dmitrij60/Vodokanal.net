@@ -16,7 +16,7 @@ class ServiceController extends ApplicationController
     /**
      * @Route("/service", name="service_list" )
      */
-    public function indexAction(Request $request)
+    /*public function indexAction(Request $request)
     {
         $services = [
             '0' => 'Заявки на картриджи',
@@ -26,13 +26,13 @@ class ServiceController extends ApplicationController
         ];
 
         return  $this->render('@App/service/index.html.twig');
-    }
+    }*/
     /**
      * @Route("/service/{id}", name="service_item", requirements={"id": "[0-9]+"})
      * @param $id
      * @return Response
      */
-    public function showAction($id)
+   /* public function showAction($id)
     {
         $services = [
             '0' => '1',
@@ -44,11 +44,11 @@ class ServiceController extends ApplicationController
             'id' => $id,
             'service' => $services[$id]
         ]);
-    }
+    }*/
     /**
      * @Route("/service/cartridge", name="service_cartridge")
      */
-    public function cartridgeAction()
+    /*public function cartridgeAction()
     {
         $task = new CartridgeOrder2();
         $task->setDueDate(new \DateTime('tomorrow'));
@@ -89,11 +89,11 @@ class ServiceController extends ApplicationController
         return $this->render('@App/service/cartridgesOrder.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
     /**
      * @Route("/service/repair", name="service_repair")
      */
-    public function repairAction()
+    /*public function repairAction()
     {
         $task = new Task();
         $task->setTask('Укажте причину обращения');
@@ -109,11 +109,11 @@ class ServiceController extends ApplicationController
         return $this->render('@App/service/repair.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
     /**
      * @Route("/service/consultation", name="service_consultation")
      */
-    public function consultationAction()
+    /*public function consultationAction()
     {
         $task = new Task();
         $task->setTask('Укажте причину обращения');
@@ -129,11 +129,11 @@ class ServiceController extends ApplicationController
         return $this->render('@App/service/consultation.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
     /**
      * @Route("/service/departure", name="service_departure")
      */
-    public function departureAction()
+    /*public function departureAction()
     {
         $task = new Task();
         $task->setTask('Укажте причину обращения');
@@ -149,5 +149,5 @@ class ServiceController extends ApplicationController
         return $this->render('@App/service/departure.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
 }

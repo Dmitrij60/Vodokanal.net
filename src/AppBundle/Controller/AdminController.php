@@ -30,7 +30,7 @@ class  AdminController extends ApplicationController
      */
     public function gridAction()
     {
-        dump($this->container);
+        /*dump($this->container);
         die;
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:MyEntity');
@@ -51,7 +51,7 @@ class  AdminController extends ApplicationController
         $grid->setLimits(5);
 
         // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
+        return $grid->getGridResponse('@App/admin/grid.html.twig');*/
     }
 
     /**
@@ -238,5 +238,8 @@ class  AdminController extends ApplicationController
             'param' => $text
         ]);
     }
+
+
+
 
 }

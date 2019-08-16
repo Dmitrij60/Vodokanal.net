@@ -56,4 +56,16 @@ class DefaultController extends ApplicationController
             'cartridges' => $cartridges
         ]);
     }
+
+    /**
+     * @Route("/pageAdmAvto", name="homepageAdmAvto")
+     */
+    public function indexAdmAvtoAction(Request $request)
+    {
+        $cartridges = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->findAll();
+
+        return $this->render('@App/default/indexAdmAvto.html.twig', [
+            'cartridges' => $cartridges
+        ]);
+    }
 }
