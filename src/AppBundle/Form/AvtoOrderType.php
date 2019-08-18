@@ -3,6 +3,8 @@
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +16,17 @@ class AvtoOrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('district')
-            ->add('sender')
-            ->add('status')
-            ->add('driver');
+            ->add('district', ChoiceType::class, [
+                'choices' => [
+                    'Данков' => 'Данков',
+                    'Доброе' => 'Доброе',
+                    'Измалково' => 'Измалково',
+                    'Красное' => 'Красное',
+                ],
+                'label' => false,])
+            ->add('sender', HiddenType::class, [
+                'data' => null,
+            ]);
     }/**
      * {@inheritdoc}
      */

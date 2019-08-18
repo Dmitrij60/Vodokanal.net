@@ -16,7 +16,7 @@ class ConsultationOrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('district', HiddenType::class, [
+            ->add('sender', HiddenType::class, [
                 'data' => null,
             ])
             ->add('department', ChoiceType::class, [

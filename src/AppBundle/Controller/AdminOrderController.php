@@ -30,7 +30,7 @@ class  AdminOrderController extends ApplicationController
         $issued = $status->getIssued();
         $who = $status->getWho();
 
-        $A = gethostbyaddr($_SERVER['REMOTE_ADDR']);//TODO:remote addr
+
 
         if(isset($_POST['who']) && isset($_POST['issued']) && isset($_POST['id'])){
             $who=$_POST['who'];

@@ -11,26 +11,21 @@
       {{ form_start(orderForm) }}
 
 
-     {# {{ form_row(orderForm.district, {attr: { value : app.user.username } }) }}
+      {{ form_row(orderForm.sender, {attr: { value : app.user.username } }) }}
       <br>
 
-      {{ form_label(orderForm.department, 'Укажите Ваш отдел') }}
-      {{ form_row(orderForm.department) }}
+      {{ form_label(orderForm.district, 'Укажите район выезда') }}
+      {{ form_row(orderForm.district) }}
       <br>
 
-      {{ form_label(orderForm.cartridgeModel, 'Укажите модель картриджа') }}
-      {{ form_row(orderForm.cartridgeModel) }}
-      <br>
 
-      {{ form_label(orderForm.count, 'Укажите кол-во') }}
-      {{ form_row(orderForm.count) }}
-      <br>#}
+
+      <br>
 
       {{ form_end(orderForm) }}
         <br>
         <hr>
-        <a class="" href="{{ path('cartridge_list') }}">Информация по моделям картриджей</a><br>
-        <a class="" href="{{ path('printer_list') }}">Информация по моделям принтеров</a>
+
 
     </div>
 {% endblock %}

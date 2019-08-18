@@ -25,28 +25,28 @@ class AvtoOrder
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="район", searchOnClick="true")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="сотрудник")
      * @ORM\Column(name="sender", type="string", length=255)
      */
     private $sender;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="статус", searchOnClick="true")
      * @ORM\Column(name="status", type="string", length=255, nullable=true)
      */
     private $status;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="Водитель")
      * @ORM\Column(name="driver", type="string", length=255, nullable=true)
      */
     private $driver;
