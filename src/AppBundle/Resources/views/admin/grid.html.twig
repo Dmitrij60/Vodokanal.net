@@ -1,8 +1,5 @@
 {% extends '@App/layoutAdmin.html.twig' %}
-
 {% block title %} Grid {% endblock %}
-
-
 {% block body %}
 
     {% for label, messages in app.flashes %}
@@ -12,26 +9,18 @@
             </div>
         {% endfor %}
     {% endfor %}
-
     <div class="starter-template">
-<h2>{{ param }}</h2>
+        <h2>{{ param }}</h2>
     </div>
-
     <div class="container2">
-
         <hr>
-
         {{ grid(grid, _self) }}
         <hr>
-
-
         {# {{ grid_search(grid) }}#}
         {% block grid_filters %}{% endblock %}
     </div>
 {% endblock %}
-
 {% block stylesheets %}
     <style>
-
     </style>
 {% endblock %}
