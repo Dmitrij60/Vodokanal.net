@@ -15,7 +15,7 @@ class EditCartridgeOrderType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    /*public function buildForm(FormBuilderInterface $builder, array $options)
     {
        $builder->add('status', ChoiceType::class, [
                 'choices' => [
@@ -29,24 +29,24 @@ class EditCartridgeOrderType extends AbstractType
                 'label' => false,
             ]);
 
-    }
+    }*/
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    /*public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\CartridgeOrder'
         ));
-    }
+    }*/
 
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    /*public function getBlockPrefix()
     {
         return 'appbundle_cartridgeorder';
-    }
+    }*/
 
 
 }

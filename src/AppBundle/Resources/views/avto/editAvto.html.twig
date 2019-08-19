@@ -1,0 +1,65 @@
+{% extends template %}
+
+
+{% block title %} Edit {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+
+       <h2>Данные заявки № {{ id }}</h2> <br>
+        <hr>
+        <b>Район</b>: {{ district }} <br>
+        <b>Заявка подана:</b> {{ created |date('d.m.y h:m') }} <br>
+        <b>Статус</b>: {{ status }} <br>
+        <b>Кем подана</b>: {{ sender }} <br>
+
+
+        <hr>
+
+        <form action="#" method="POST">
+            <input type="hidden" name="id" value="{{ id }}" />
+            <label>Изменить статус заявки</label>
+            <select name="status" class="form-control" aria-required="true" onChange="Selected(this)">
+                <option value="Заявка отменена" selected>Заявка отменена</option>
+                <option value="Заявка принята">Заявка принята</option>
+                <option value="Заявка выполнена">Заявка выполнена</option>
+            </select>
+
+            <br><br>
+
+            <label id="Label1" style='display: none;'>Назначить водителя</label>
+            <select id="Label2" type="text" class="form-control" name="driver" style='display: none;'>
+                <option value="Токарев">Токарев</option>
+                <option value="Васильев">Васильев</option>
+            </select>
+
+            <br>
+            <input type="submit" value="Записать">
+        </form>
+
+
+    </div>
+
+
+{% block javascripts %}
+    <script>function Selected(a) {
+            var label = a.value;
+            if (label === "Заявка принята") {
+                document.getElementById("Label1").style.display = 'block';
+                document.getElementById("Label2").style.display = 'block';
+            } else {
+                document.getElementById("Label1").style.display = 'none';
+                document.getElementById("Label2").style.display = 'none';
+            }
+        }
+    </script>
+{% endblock %}
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+
+{% endblock %}
+

@@ -32,6 +32,7 @@ security:
         ROLE_AUP:         ROLE_AUP
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ADM_AVTO:    ROLE_AVTO
 
     providers:
         fos_userbundle:
@@ -55,7 +56,6 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: ROLE_ADMIN }
-        - { path: ^/service_list, role: ROLE_USER}
         - { path: ^/repair_order, role: ROLE_USER}
         - { path: ^/departure_order, role: ROLE_USER }
         - { path: ^/consultation_order, role: [ROLE_AUP, ROLE_USER]}

@@ -11,36 +11,6 @@ use APY\DataGridBundle\Grid\Column\JoinColumn;
 class  AdminController extends ApplicationController
 {
     /**
-     * @Route("/admin_grid", name="admin_grid")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function gridAction()
-    {
-        dump($this->container);
-        die;
-        // Creates a simple grid based on your entity (ORM)
-        $source = new Entity('AppBundle:MyEntity');
-
-        // Get a Grid instance
-        $grid = $this->get('grid');
-
-        // Attach the source to the grid
-        $grid->setSource($source);
-
-        // create a column
-        $MyColumn = new BlankColumn(array ( ' id '  =>  ' myBlankColumn ' , ' title '  =>  ' My Blank Column ' , ' size '  =>  ' 54 ' ));
-
-        // Add the column to the last position
-        $grid->addColumn($MyColumn);
-
-        // OR with only one value
-        $grid->setLimits(5);
-
-        // Return the response of the grid to the template
-        return $grid->getGridResponse('@App/admin/grid.html.twig');
-    }
-
-    /**
      * @Route("/admin_cartridgeOrder", name="admin_cartridgeOrder")
      */
     public function gridCartridgeOrderAction()
@@ -73,7 +43,7 @@ class  AdminController extends ApplicationController
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [
-            'param' => $text
+            'param' => $text,
         ]);
     }
 
@@ -244,5 +214,8 @@ class  AdminController extends ApplicationController
             'param' => $text
         ]);
     }
+
+
+
 
 }

@@ -21,6 +21,8 @@ class  AdminOrderController extends ApplicationController
      */
     public function orderEditCartridgeStatusAction($id)
     {
+        $template = $this->roleWithTemplate();
+
         $em = $this->getDoctrine()->getManager();
         $status = $em->getRepository(CartridgeOrder::class)->find($id);
         $cartridgeModel = $status->getCartridgeModel();
@@ -30,7 +32,7 @@ class  AdminOrderController extends ApplicationController
         $issued = $status->getIssued();
         $who = $status->getWho();
 
-        $A = gethostbyaddr($_SERVER['REMOTE_ADDR']);//TODO:remote addr
+
 
         if(isset($_POST['who']) && isset($_POST['issued']) && isset($_POST['id'])){
             $who=$_POST['who'];
@@ -48,6 +50,7 @@ class  AdminOrderController extends ApplicationController
             return $this->redirectToRoute('admin_cartridgeOrder');
         }
         return $this->render('@App/admin/editCartridge.html.twig', [
+            'template' => $template,
             'id' => $id,
             'cartridgeModel' => $cartridgeModel,
             'district' => $district,
@@ -65,6 +68,8 @@ class  AdminOrderController extends ApplicationController
      */
     public function orderEditConsultationStatusAction($id)
     {
+        $template = $this->roleWithTemplate();
+
         $em = $this->getDoctrine()->getManager();
         $edit = $em->getRepository(ConsultationOrder::class)->find($id);
         $district = $edit->getDistrict();
@@ -75,11 +80,6 @@ class  AdminOrderController extends ApplicationController
         $status = $edit->getStatus();
         $responsible = $edit->getResponsible();
         $user = $this->getUser();
-
-        /*$reason = substr($reason, 0, 50);
-        $reason = rtrim($reason, "!,.-");
-        $reason = substr($reason, 0, strrpos($reason, ' '));
-        $reason = $reason."...";*/
 
         if($responsible == $user) {
             if (isset($_POST['status']) && isset($_POST['id'])) {
@@ -104,6 +104,7 @@ class  AdminOrderController extends ApplicationController
                 return $this->redirectToRoute('admin_consultationOrder');
             }
             return $this->render('@App/admin/editConsultation.html.twig', [
+                'template' => $template,
                 'id' => $id,
                 'district' => $district,
                 'department' => $department,
@@ -160,6 +161,8 @@ class  AdminOrderController extends ApplicationController
      */
     public function orderEditDepartureStatusAction($id)
     {
+        $template = $this->roleWithTemplate();
+
         $em = $this->getDoctrine()->getManager();
         $edit = $em->getRepository(DepartureOrder::class)->find($id);
         $district = $edit->getDistrict();
@@ -197,6 +200,7 @@ class  AdminOrderController extends ApplicationController
                 return $this->redirectToRoute('admin_departureOrder');
             }
             return $this->render('@App/admin/editDeparture.html.twig', [
+                'template' => $template,
                 'id' => $id,
                 'district' => $district,
                 'reason' => $reason,

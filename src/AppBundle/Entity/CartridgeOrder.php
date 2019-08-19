@@ -52,7 +52,7 @@ class CartridgeOrder
 
     /**
      * @var \DateTime
-     *@GRID\Column(title="подана", format="d.m.y H:i:s")
+     *@GRID\Column(title="подана", format="d.m.y H:i")
      * @ORM\Column(name="created", type="datetime")
      */
     private $created;
