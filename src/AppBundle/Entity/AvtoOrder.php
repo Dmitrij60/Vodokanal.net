@@ -32,6 +32,13 @@ class AvtoOrder
 
     /**
      * @var string
+     * @GRID\Column(title="Цель")
+     * @ORM\Column(name="reason", type="string", length=255, nullable=true)
+     */
+    private $reason;
+
+    /**
+     * @var string
      * @GRID\Column(title="сотрудник")
      * @ORM\Column(name="sender", type="string", length=255)
      */
@@ -98,6 +105,30 @@ class AvtoOrder
     public function getDistrict()
     {
         return $this->district;
+    }
+
+    /**
+     * Set reason
+     *
+     * @param string $reason
+     *
+     * @return AvtoOrder
+     */
+    public function setReason($reason)
+    {
+        $this->reason = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Get reason
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->reason;
     }
 
     /**
