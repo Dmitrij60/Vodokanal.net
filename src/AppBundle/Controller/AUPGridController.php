@@ -75,6 +75,4 @@ class AUPGridController extends ApplicationController
             'param' => $text,
         ]);
     }
-
-
 }

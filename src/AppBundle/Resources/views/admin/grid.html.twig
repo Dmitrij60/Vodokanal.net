@@ -13,6 +13,10 @@
         <h2>{{ param }}</h2>
     </div>
     <div class="container2">
+        {% if button is defined %}
+            <button href=""> {{ button }} </button>
+        {% endif %}
+
         <hr>
         {{ grid(grid, _self) }}
         <hr>

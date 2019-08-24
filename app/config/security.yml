@@ -60,3 +60,5 @@ security:
         - { path: ^/departure_order, role: ROLE_USER }
         - { path: ^/consultation_order, role: [ROLE_AUP, ROLE_USER]}
         - { path: ^/cartridge_order, role: ROLE_USER }
+        - { path: ^/adminAvtoOrder, role: ROLE_AVTO }
+        - { path: ^/edit_avto_order_status, role: ROLE_AVTO }

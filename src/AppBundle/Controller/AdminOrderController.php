@@ -121,7 +121,7 @@ class  AdminOrderController extends ApplicationController
     }
 
     /**
-     * @Route("/_consultation_order_responsible/{id}", name="edit_responsible_consultation_order")
+     * @Route("/consultation_order_responsible/{id}", name="edit_responsible_consultation_order")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
@@ -137,6 +137,7 @@ class  AdminOrderController extends ApplicationController
             );
         }
         $param = $responsible->getResponsible();
+
         if($param == !null && $param != $user){
             $this->addFlash('warning','Вы не можете взять заявку, ее уже взял другой сотрудник!');
         }else if($param == $user){

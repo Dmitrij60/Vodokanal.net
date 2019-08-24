@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use APY\DataGridBundle\Grid\Mapping as GRID;
 
 /**
  * HandBook
@@ -23,45 +24,38 @@ class HandBook
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="ФИО")
      * @ORM\Column(name="fio", type="string", length=255, nullable=true)
      */
     private $fio;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="Отдел", searchOnClick="true")
      * @ORM\Column(name="department", type="string", length=255, nullable=true)
      */
     private $department;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="Должность", searchOnClick="true")
      * @ORM\Column(name="position", type="string", length=255, nullable=true)
      */
     private $position;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="Email")
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
      * @var string
-     *
+     * @GRID\Column(title="Короткий номер", size="30")
      * @ORM\Column(name="short_phone", type="string", length=255, nullable=true)
      */
     private $shortPhone;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="long_phone", type="string", length=255, nullable=true)
-     */
-    private $longPhone;
 
 
     /**
@@ -194,28 +188,5 @@ class HandBook
         return $this->shortPhone;
     }
 
-    /**
-     * Set longPhone
-     *
-     * @param string $longPhone
-     *
-     * @return HandBook
-     */
-    public function setLongPhone($longPhone)
-    {
-        $this->longPhone = $longPhone;
-
-        return $this;
-    }
-
-    /**
-     * Get longPhone
-     *
-     * @return string
-     */
-    public function getLongPhone()
-    {
-        return $this->longPhone;
-    }
 }
 

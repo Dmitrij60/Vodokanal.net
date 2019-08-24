@@ -37,10 +37,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Справочник</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="{{ path('admin_handbook') }}">По АУП</a>
+                    <a class="dropdown-item" href="#">По районам</a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Справочник</a>
+                </div>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="https://lipetskoblvodokanal.ru/wp-admin">Наш сайт</a>
             </li>
@@ -59,8 +65,14 @@
                     <a class="dropdown-item" href="{{ path('admin_improve')}}">Предложения по улучшению</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Парольная база</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">Парольная база</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">Сервера</a>
+                    <a class="dropdown-item" href="#">Личные кабинеты</a>
+                    <a class="dropdown-item" href="#">Почта</a>
+                </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="{{ path('fos_user_security_logout') }}">
