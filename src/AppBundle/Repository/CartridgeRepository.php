@@ -25,4 +25,17 @@ class CartridgeRepository extends \Doctrine\ORM\EntityRepository
         ;
 
     }
+
+    public function countCartridge()
+    {
+        $results = $this
+            ->createQueryBuilder('cartridge')
+            ->where('cartridge.exist = 1')
+            ->getQuery()
+            ->getResult()
+            ;
+        $resultCount = count($results);
+        return $resultCount;
+
+    }
 }

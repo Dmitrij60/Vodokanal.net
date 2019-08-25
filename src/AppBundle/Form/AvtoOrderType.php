@@ -24,6 +24,9 @@ class AvtoOrderType extends AbstractType
                     'Красное' => 'Красное',
                 ],
                 'label' => false,])
+            ->add('reason', null, [
+                'label' =>false
+            ])
             ->add('sender', HiddenType::class, [
                 'data' => null,
             ]);

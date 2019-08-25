@@ -15,6 +15,8 @@ class CartridgeController extends ApplicationController
      */
     public function indexAction()
     {
+        $template = $this->roleWithTemplate();
+
         $cartridges = $this
             ->getDoctrine()
             ->getRepository('AppBundle:Cartridge')
@@ -26,6 +28,7 @@ class CartridgeController extends ApplicationController
             ->findExistCartridge();
 
         return $this->render('@App/cartridges/index.html.twig', [
+            'template' => $template,
             'cartridges' => $cartridges,
             'cartridgesExist' => $cartridgesExist
         ]);
@@ -38,6 +41,8 @@ class CartridgeController extends ApplicationController
      */
     public function showAction(Cartridge $cartridge)
     {
+        $template = $this->roleWithTemplate();
+
         dump($cartridge);
        /* $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->find($id);
 
@@ -46,6 +51,7 @@ class CartridgeController extends ApplicationController
         }*/
 
         return $this->render('@App/cartridges/show.html.twig',[
+            'template' => $template,
             'cartridge' => $cartridge
         ]);
 
