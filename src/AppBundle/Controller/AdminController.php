@@ -215,7 +215,51 @@ class  AdminController extends ApplicationController
         ]);
     }
 
+    /**
+     * @Route("/admin_handBook", name="admin_handbook")
+     */
+    public function gridHandBookAction()
+    {
+        $text = 'Справочник по АУП';
+        $button = "Добавить запись";
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:HandBook');
 
+        // Get a Grid instance
+        $grid = $this->get('grid');
 
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+        $grid->setDefaultOrder('department', 'desc');
+
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $responsible = new ActionsColumn('action3', '', [
+            'size' => '30'
+        ]);
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'ред.';
+        $editRoute = 'edit_handbook_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        $editTitle = 'удал.';
+        $editRoute = 'del_handbook_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'button' => $button,
+            'param' => $text,
+        ]);
+    }
 
 }

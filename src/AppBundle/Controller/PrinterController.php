@@ -13,6 +13,8 @@ class PrinterController extends ApplicationController
      */
     public function indexAction()
     {
+        $template = $this->roleWithTemplate();
+
         $printers = $this
             ->getDoctrine()
             ->getRepository('AppBundle:Printer')
@@ -22,6 +24,7 @@ class PrinterController extends ApplicationController
             ->getRepository('AppBundle:Printer');
         //->findExistCartridge();
         return $this->render('@App/printers/index.html.twig', [
+            'template' => $template,
             'printers' => $printers,
             'printersExist' => $printersExist
         ]);
@@ -33,11 +36,14 @@ class PrinterController extends ApplicationController
      */
     public function showAction(Printer $printer)
     {
+        $template = $this->roleWithTemplate();
+
         //$printer = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->find($id);
         //if(!$printer){
         //     throw $this->createNotFoundException('Printer not found');
         // }
         return $this->render('@App/printers/show.html.twig',[
+            'template' => $template,
             'printer' => $printer
         ]);
     }
