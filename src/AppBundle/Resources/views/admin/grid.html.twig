@@ -20,7 +20,7 @@
     </div>
     <div class="container2">
         {% if button is defined %}
-            <button href=""> {{ button }} </button>
+            <a href="{{ path('add_handbook_row') }}"> <button> {{ button }} </button></a>
         {% endif %}
 
         <hr>
@@ -55,18 +55,16 @@
 
             var orderCount = {output: 1};
 
-            function Ajax(orderCount)
-            {
-                $(document).ready(function(){
+            /*function Ajax(orderCount) {
+                $(document).ready(function () {
                     that = $(this);
                     $.ajax({
-                        url:'{{ (path('ajax')) }}',
+                        url: '{{ (path('ajax')) }}',
                         type: "POST",
                         dataType: "json",
                         data: {"some_var_name": "some_var_value"},
                         async: true,
-                        success: function (data)
-                        {
+                        success: function (data) {
                             if (orderCount.output !== data.output) {
                                 console.log(orderCount.output)
 
@@ -77,17 +75,18 @@
 
                                 console.log(orderCount.output);
 
-                                /*$('#ajax').html(orderCount.output);*/
-                            }else {
+                                /!*$('#ajax').html(orderCount.output);*!/
+                            } else {
                                 console.log(orderCount.output);
 
                                 clearInterval(intervalID);
                                 return false;
-                                                    }
+                            }
+                        }
                     });
                     return false;
                 });
-            }
+            }*/
 
             setInterval('Ajax(orderCount)', 5000)
 

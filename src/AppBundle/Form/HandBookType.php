@@ -14,11 +14,21 @@ class HandBookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fio')
-            ->add('department')
-            ->add('position')
-            ->add('email')
-            ->add('shortPhone');
+            ->add('fio', null, [
+                'label' =>false
+            ])
+            ->add('department', null, [
+                'label' =>false
+            ])
+            ->add('position', null, [
+                'label' =>false
+            ])
+            ->add('email', null, [
+                'label' =>false
+            ])
+            ->add('shortPhone', null, [
+                'label' =>false
+            ]);
     }/**
      * {@inheritdoc}
      */
