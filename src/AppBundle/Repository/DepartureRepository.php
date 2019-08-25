@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class DepartureRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countOrder()
+    {
+        $results = $this
+            ->createQueryBuilder('departure')
+            ->getQuery()
+            ->getResult()
+        ;
+        $resultCount = count($results);
+        return $resultCount;
+    }
 }

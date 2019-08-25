@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class ConsultationOrderRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countOrder()
+    {
+        $results = $this
+            ->createQueryBuilder('consultation')
+            ->getQuery()
+            ->getResult()
+        ;
+        $resultCount = count($results);
+        return $resultCount;
+    }
 }

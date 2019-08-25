@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ApplicationController extends Controller
 {
-
     public function roleWithTemplate()
     {
         $user = $this->container->get('security.token_storage')->getToken()->getUser();
@@ -35,6 +34,14 @@ class ApplicationController extends Controller
                 return $template;
                 break;
         }
+    }
+
+    public function session()
+    {
+        $countOrder = '';
+        session_start();
+        $_SESSION['order']= $countOrder;
+
     }
 
 }

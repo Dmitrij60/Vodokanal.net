@@ -11,7 +11,7 @@ use APY\DataGridBundle\Grid\Column\JoinColumn;
 class  AdminController extends ApplicationController
 {
     /**
-     * @Route("/admin_cartridgeOrder", name="admin_cartridgeOrder")
+     * @Route("/admin/grid/cartridgeOrder", name="admin_cartridgeOrder")
      */
     public function gridCartridgeOrderAction()
     {
@@ -48,7 +48,7 @@ class  AdminController extends ApplicationController
     }
 
     /**
-     * @Route("/adminRepairOrder", name="admin_repairOrder")
+     * @Route("/admin/grid/RepairOrder", name="admin_repairOrder")
      */
     public function gridRepairOrderAction()
     {
@@ -83,7 +83,7 @@ class  AdminController extends ApplicationController
     }
 
     /**
-     * @Route("/adminDepartureOrder", name="admin_departureOrder")
+     * @Route("/admin/grid/DepartureOrder", name="admin_departureOrder")
      */
     public function gridDepartureOrderAction()
     {
@@ -128,7 +128,7 @@ class  AdminController extends ApplicationController
     }
 
     /**
-     * @Route("/adminConsultationOrder", name="admin_consultationOrder")
+     * @Route("/admin/grid/ConsultationOrder", name="admin_consultationOrder")
      */
     public function gridConsultationOrderAction()
     {
@@ -192,7 +192,7 @@ class  AdminController extends ApplicationController
     }
 
     /**
-     * @Route("/adminImprove", name="admin_improve")
+     * @Route("/admin/grid/Improve", name="admin_improve")
      */
     public function gridImproveAction()
     {
