@@ -28,4 +28,16 @@ class CartridgeOrderRepository extends \Doctrine\ORM\EntityRepository
             ->execute();
     }
 
+    public function getCount()
+    {
+        $results = $this
+            ->createQueryBuilder('cartridge_order')
+            ->where('cartridge_order.district = dankov')
+            ->getQuery()
+            ->getResult()
+        ;
+        $resultCount = count($results);
+        return $resultCount;
+    }
+
 }

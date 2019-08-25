@@ -10,4 +10,14 @@ namespace AppBundle\Repository;
  */
 class RepairOrderRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function countOrder()
+    {
+        $results = $this
+            ->createQueryBuilder('repair')
+            ->getQuery()
+            ->getResult()
+        ;
+        $resultCount = count($results);
+        return $resultCount;
+    }
 }

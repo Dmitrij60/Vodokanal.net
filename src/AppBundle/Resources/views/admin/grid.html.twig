@@ -14,6 +14,9 @@
     {% endfor %}
 
     <div class="starter-template">
+        <button id="send">click</button>
+        <p id="ajax"></p>
+
 <h2>{{ param }}</h2>
     </div>
 
@@ -28,6 +31,98 @@
         {# {{ grid_search(grid) }}#}
         {% block grid_filters %}{% endblock %}
     </div>
+
+    {% block javascripts %}
+
+
+        <script>
+
+            function First(){
+                $('title').text('Новая заявка!')
+            };
+            function Second(){
+                $('title').text('Проверьте!')
+            };
+            function Third(){
+                First();
+                setTimeout('Second()', 1000)
+            };
+
+            function Intrvl(){
+                var intervalID = setInterval('Third()', 2000)
+            };
+
+
+
+
+            var orderCount = {output: 1};
+
+            function Ajax(orderCount)
+            {
+                $(document).ready(function(){
+                    that = $(this);
+                    $.ajax({
+                        url:'{{ (path('ajax')) }}',
+                        type: "POST",
+                        dataType: "json",
+                        data: {"some_var_name": "some_var_value"},
+                        async: true,
+                        success: function (data)
+                        {
+                            if (orderCount.output !== data.output) {
+                                console.log(orderCount.output)
+
+                                Intrvl();
+
+
+                                orderCount.output = data.output;
+
+                                console.log(orderCount.output);
+
+                                /*$('#ajax').html(orderCount.output);*/
+                            }else {
+                                console.log(orderCount.output);
+
+                                clearInterval(intervalID);
+                                return false;
+                                                    }
+                    });
+                    return false;
+                });
+            }
+
+            setInterval('Ajax(orderCount)', 5000)
+
+
+
+
+
+        $(document).ready(function(){
+            var a = location.pathname;
+            alert(a);
+        });
+
+
+
+
+        function First(){
+            $('title').text('Новая заявка!')
+        };
+        function Second(){
+            $('title').text('Проверьте!')
+        };
+        function Third(){
+            First();
+            setTimeout('Second()', 1000)
+        };
+
+        $('#send').bind('click', function(){
+            setInterval('Third()', 2000)
+        });
+
+    </script>
+    {% endblock %}
+
 {% endblock %}
 
 {% block stylesheets %}
