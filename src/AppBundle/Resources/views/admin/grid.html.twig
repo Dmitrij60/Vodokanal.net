@@ -59,7 +59,7 @@
             {
                 $(document).ready(function(){
                     that = $(this);
-                    $.ajax({
+                    let ajax = $.ajax({
                         url:'{{ (path('ajax')) }}',
                         type: "POST",
                         dataType: "json",
@@ -78,12 +78,12 @@
                                 console.log(orderCount.output);
 
                                 /*$('#ajax').html(orderCount.output);*/
-                            }else {
+                            }/*else {
                                 console.log(orderCount.output);
 
                                 clearInterval(intervalID);
                                 return false;
-                                                    }
+                                                    }*/
                     });
                     return false;
                 });
@@ -115,7 +115,7 @@
         };
 
         $('#send').bind('click', function(){
-            setInterval('Third()', 2000)
+            Intrvl();
         });
 
     </script>
