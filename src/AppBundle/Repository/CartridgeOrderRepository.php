@@ -32,7 +32,6 @@ class CartridgeOrderRepository extends \Doctrine\ORM\EntityRepository
     {
         $results = $this
             ->createQueryBuilder('cartridge_order')
-            ->where('cartridge_order.district = dankov')
             ->getQuery()
             ->getResult()
         ;

@@ -2,6 +2,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\HandBook;
+use AppBundle\Form\HandBookType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -81,6 +83,38 @@ class  AdminHandBookController extends ApplicationController
         $this->addFlash('warning','Строка удалена');
         return $this->redirectToRoute('admin_handbook', [
             'id' => $rowId->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/handbook/row/add", name="add_handbook_row")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function addHandBoorRowAction(Request $request)
+    {
+        $template = $this->roleWithTemplate();
+
+        $form = $this->createForm(HandBookType::class);
+        $form->add('Добавить запись', SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $order = $form->getData();
+            //Сохранение сущности в бд
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($order);
+            $em->flush();
+
+            $this->addFlash('success', 'Запись добавлена');
+            //Редирект
+            return $this->redirectToRoute('admin_handbook');
+        }
+
+        return $this->render('@App/admin/addRowHandBook.html.twig',[
+            'orderForm' => $form->createView(),
+            'template' => $template
         ]);
     }
 }

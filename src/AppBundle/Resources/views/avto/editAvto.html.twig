@@ -9,6 +9,8 @@
        <h2>Данные заявки № {{ id }}</h2> <br>
         <hr>
         <b>Район</b>: {{ district }} <br>
+        <b>Адрес</b>: {{ address }} <br>
+        <b>Цель</b>: {{ reason }} <br>
         <b>Заявка подана:</b> {{ created |date('d.m.y h:m') }} <br>
         <b>Статус</b>: {{ status }} <br>
         <b>Кем подана</b>: {{ sender }} <br>

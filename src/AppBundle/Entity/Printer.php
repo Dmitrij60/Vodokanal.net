@@ -35,6 +35,13 @@ class Printer
      */
     private $discription;
 
+    /**
+     * @var Cartridge|null
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Cartridge")
+     */
+    private $cartridgeModel;
+
 
     /**
      * Get id
@@ -92,6 +99,30 @@ class Printer
     public function getDiscription()
     {
         return $this->discription;
+    }
+
+    /**
+     * Set cartridgeModel
+     *
+     * @param string $cartridgeModel
+     *
+     * @return Printer
+     */
+    public function setCartridgeModel($cartridgeModel)
+    {
+        $this->cartridgeModel = $cartridgeModel;
+
+        return $this;
+    }
+
+    /**
+     * Get cartridgeModel
+     *
+     * @return Cartridge|null
+     */
+    public function getCartridgeModel()
+    {
+        return $this->cartridgeModel;
     }
 }
 

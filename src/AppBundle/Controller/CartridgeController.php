@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Cartridge;
+use AppBundle\Entity\Printer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,16 +44,21 @@ class CartridgeController extends ApplicationController
     {
         $template = $this->roleWithTemplate();
 
-        dump($cartridge);
-       /* $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->find($id);
 
-        if(!$cartridge){
+
+        $printers = $this->getDoctrine()->getRepository('AppBundle:Printer')->findByCartridgeId($cartridge);
+        /*dump($printers);
+        die;*/
+       // $cartridge = $this->getDoctrine()->getRepository('AppBundle:Cartridge')->find($id);
+
+        /*if(!$cartridge){
             throw $this->createNotFoundException('Cartridge not found');
         }*/
 
         return $this->render('@App/cartridges/show.html.twig',[
             'template' => $template,
-            'cartridge' => $cartridge
+            'cartridge' => $cartridge,
+            'printers' => $printers
         ]);
 
     }

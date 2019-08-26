@@ -11,16 +11,13 @@
     {% endfor %}
     <div class="starter-template">
 
-        <button id="send">click</button>
-        <p id="ajax"></p>
-
 <h2>{{ param }}</h2>
 
 
     </div>
     <div class="container2">
         {% if button is defined %}
-            <button href=""> {{ button }} </button>
+            <a href="{{ path('add_handbook_row') }}"> <button> {{ button }} </button></a>
         {% endif %}
 
         <hr>
@@ -47,7 +44,7 @@
             };
 
             function Intrvl(){
-                var intervalID = setInterval('Third()', 2000)
+                setInterval('Third()', 2000)
             };
 
 
@@ -55,68 +52,61 @@
 
             var orderCount = {output: 1};
 
-            function Ajax(orderCount)
-            {
-                $(document).ready(function(){
+            function Ajax(orderCount) {
+                $(document).ready(function () {
                     that = $(this);
-                    let ajax = $.ajax({
-                        url:'{{ (path('ajax')) }}',
+                    $.ajax({
+                        url: '{{ (path('ajax')) }}',
                         type: "POST",
                         dataType: "json",
                         data: {"some_var_name": "some_var_value"},
                         async: true,
-                        success: function (data)
-                        {
+                        cache: false,
+                        success: function (data) {
                             if (orderCount.output !== data.output) {
                                 console.log(orderCount.output)
+                                console.log(data.output)
 
-                                Intrvl();
+                                var intID = setInterval('Third()', 2000)
 
+
+                                //Записать в сессию js data.output
 
                                 orderCount.output = data.output;
-
                                 console.log(orderCount.output);
+                                if(location.pathname == "/admin/grid/RepairOrder"){
+                                    alert("111");
+                                    clearInterval(intID);
+                                }
 
-                                /*$('#ajax').html(orderCount.output);*/
-                            }/*else {
+
+
+                            } else {
+                                orderCount.output = 2;
                                 console.log(orderCount.output);
-
-                                clearInterval(intervalID);
+                                clearInterval(intID);
                                 return false;
-                                                    }*/
+                            }
+                        }
                     });
                     return false;
                 });
             }
 
-            setInterval('Ajax(orderCount)', 5000)
+            $(document).ready(setInterval('Ajax(orderCount)', 5000));
+
+            if(window.sessionStorage && window.localStorage){
+                alert('+');
+            }
 
 
 
 
 
-        $(document).ready(function(){
+        /*$(document).ready(function(){
             var a = location.pathname;
             alert(a);
-        });
-
-
-
-
-        function First(){
-            $('title').text('Новая заявка!')
-        };
-        function Second(){
-            $('title').text('Проверьте!')
-        };
-        function Third(){
-            First();
-            setTimeout('Second()', 1000)
-        };
-
-        $('#send').bind('click', function(){
-            Intrvl();
-        });
+        });*/
 
     </script>
     {% endblock %}

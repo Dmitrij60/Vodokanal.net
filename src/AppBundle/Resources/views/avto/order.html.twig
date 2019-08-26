@@ -18,8 +18,12 @@
       {{ form_row(orderForm.district) }}
       <br>
 
-      {{ form_label(orderForm.reason, 'Укажите причину заявки на выезд') }}
+        {{ form_label(orderForm.address, 'Укажите адрес') }}
+        {{ form_row(orderForm.address) }}
+        <br>
 
+      {{ form_label(orderForm.reason, 'Укажите цель выезда') }}
+      {{ form_row(orderForm.reason) }}
       <br>
 
       {{ form_end(orderForm) }}

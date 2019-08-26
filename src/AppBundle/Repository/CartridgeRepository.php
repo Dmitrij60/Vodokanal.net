@@ -30,7 +30,6 @@ class CartridgeRepository extends \Doctrine\ORM\EntityRepository
     {
         $results = $this
             ->createQueryBuilder('cartridge')
-            ->where('cartridge.exist = 1')
             ->getQuery()
             ->getResult()
             ;
