@@ -31,8 +31,8 @@
 
 
         <script>
-
-            function First(){
+// Динамический тайтл
+           /* function First(){
                 $('title').text('Новая заявка!')
             };
             function Second(){
@@ -45,18 +45,17 @@
 
             function Intrvl(){
                 setInterval('Third()', 2000)
-            };
+            };*/
 
 
 
-
-            var orderCount = {output: 1};
-
+//полная функция запуска
+           /* var orderCount = {output: 1};
             function Ajax(orderCount) {
                 $(document).ready(function () {
                     that = $(this);
                     $.ajax({
-                        url: '{{ (path('ajax')) }}',
+                        url: '{#{{ (path('ajax')) }}#}',
                         type: "POST",
                         dataType: "json",
                         data: {"some_var_name": "some_var_value"},
@@ -69,7 +68,6 @@
 
                                 var intID = setInterval('Third()', 2000)
 
-
                                 //Записать в сессию js data.output
 
                                 orderCount.output = data.output;
@@ -78,8 +76,6 @@
                                     alert("111");
                                     clearInterval(intID);
                                 }
-
-
 
                             } else {
                                 orderCount.output = 2;
@@ -91,13 +87,13 @@
                     });
                     return false;
                 });
-            }
+            }*/
 
-            $(document).ready(setInterval('Ajax(orderCount)', 5000));
-
-            if(window.sessionStorage && window.localStorage){
+            /*$(document).ready(setInterval('Ajax(orderCount)', 5000));*/
+//проверка работа фронт сессии
+            /*if(window.sessionStorage && window.localStorage){
                 alert('+');
-            }
+            }*/
 
 
 
