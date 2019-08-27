@@ -17,8 +17,8 @@ class AjaxController extends ApplicationController
     {
         $cartridgesExist = $this
             ->getDoctrine()
-            ->getRepository('AppBundle:Cartridge')
-            ->countCartridge();
+            ->getRepository('AppBundle:CartridgeOrder')
+            ->getCount();
 
         $departureOrders = $this
             ->getDoctrine()
@@ -37,7 +37,6 @@ class AjaxController extends ApplicationController
 
         $orders = $cartridgesExist + $departureOrders + $repairOrders + $consulattionOrders;
         $_SESSION['countOrder'] = $orders;
-
 
         if($request->request->get('some_var_name')){
             //make something curious, get some unbelieveable data

@@ -1,0 +1,49 @@
+{% extends template %}
+
+{% block title %} Cartridge order page {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Добавить запись в справочник:</h1>
+        <hr>
+        <br>
+
+      {{ form_start(orderForm) }}
+
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">ФИО</th>
+                <th scope="col">Отдел</th>
+                <th scope="col">Должность</th>
+                <th scope="col">email</th>
+                <th scope="col">Короткий номер</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ form_row(orderForm.fio) }}</td>
+                <td>{{ form_row(orderForm.department) }}</td>
+                <td>{{ form_row(orderForm.position) }}</td>
+                <td>{{ form_row(orderForm.email) }}</td>
+                <td>{{ form_row(orderForm.shortPhone) }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+      {{ form_end(orderForm) }}
+        <br>
+        <hr>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}

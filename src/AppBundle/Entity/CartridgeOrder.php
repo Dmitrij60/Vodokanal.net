@@ -31,7 +31,7 @@ class CartridgeOrder
 
     /**
      * @var string
-     *@GRID\Column(title="район", searchOnClick="true")
+     * @GRID\Column(title="район", searchOnClick="true")
      * @ORM\Column(name="district", type="string", length=255, nullable=true)
      */
     private $district;

@@ -32,6 +32,13 @@ class AvtoOrder
 
     /**
      * @var string
+     * @GRID\Column(title="адрес")
+     * @ORM\Column(name="address", type="string", length=255, nullable=true)
+     */
+    private $address;
+
+    /**
+     * @var string
      * @GRID\Column(title="Цель")
      * @ORM\Column(name="reason", type="string", length=255, nullable=true)
      */
@@ -60,7 +67,7 @@ class AvtoOrder
 
     /**
      * @var \DateTime
-     * @GRID\Column(title="подана", format="d.m.y H:i:s")
+     * @GRID\Column(title="подана", format="d.m.y H:i")
      * @ORM\Column(name="created", type="datetime", nullable=true)
      */
     private $created;
@@ -106,6 +113,31 @@ class AvtoOrder
     {
         return $this->district;
     }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return AvtoOrder
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
 
     /**
      * Set reason
