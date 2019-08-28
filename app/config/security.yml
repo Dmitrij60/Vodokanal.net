@@ -55,8 +55,14 @@ security:
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: ROLE_ADMIN }
+        - { path: ^/admin_handBook, role: ROLE_ADMIN }
+        - { path: ^/admin/grid/RepairOrder, role: ROLE_ADMIN }
+        - { path: ^/admin/grid/cartridgeOrder, role: ROLE_ADMIN }
+        - { path: ^/admin/grid/DepartureOrder, role: ROLE_ADMIN }
+        - { path: ^/admin/grid/ConsultationOrder, role: ROLE_ADMIN }
+        - { path: ^/admin/grid/Improve, role: ROLE_ADMIN }
+        - { path: ^/admin_handBook, role: ROLE_ADMIN }
         - { path: ^/repair_order, role: ROLE_USER}
         - { path: ^/departure_order, role: ROLE_USER }
         - { path: ^/consultation_order, role: [ROLE_AUP, ROLE_USER]}
