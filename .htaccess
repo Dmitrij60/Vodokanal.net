@@ -1,0 +1,5 @@
+RewriteEngine On
+
+
+
+RewriteRule ^(.*)$ web/app.php [QSA,L]
