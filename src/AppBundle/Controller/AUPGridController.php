@@ -18,7 +18,7 @@ class AUPGridController extends ApplicationController
      */
     public function gridCartridgeOrderAction()
     {
-        $text = 'Заявки на картриджи';
+        $text = 'Заявки транспорт';
         // Creates a simple grid based on your entity (ORM)
         $source = new Entity('AppBundle:AvtoOrder');
 

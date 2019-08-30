@@ -23,7 +23,8 @@
             <label>Изменить статус заявки</label>
             <select name="status" class="form-control" aria-required="true" onChange="Selected(this)">
                 <option value="Заявка отменена" selected>Заявка отменена</option>
-                <option value="Заявка принята">Заявка принята</option>
+                <option value="Заявка на рассмотрении">Заявка на рассмотрении</option>
+                <option value="Заявка одобрена">Заявка одобрена</option>
                 <option value="Заявка выполнена">Заявка выполнена</option>
             </select>
 
@@ -46,7 +47,7 @@
 {% block javascripts %}
     <script>function Selected(a) {
             var label = a.value;
-            if (label === "Заявка принята") {
+            if (label === "Заявка одобрена") {
                 document.getElementById("Label1").style.display = 'block';
                 document.getElementById("Label2").style.display = 'block';
             } else {
@@ -64,4 +65,3 @@
     </style>
 
 {% endblock %}
-
