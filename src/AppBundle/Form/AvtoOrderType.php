@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AvtoOrderType extends AbstractType
 {
@@ -26,6 +27,15 @@ class AvtoOrderType extends AbstractType
                 'label' => false,])
             ->add('reason', null, [
                 'label' =>false
+            ])
+            ->add('publishedAt', DateType::class, [
+                'widget' => 'single_text',
+
+                // prevents rendering it as type="date", to avoid HTML5 date pickers
+                'html5' => false,
+
+                // adds a class that can be selected in JavaScript
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('sender', HiddenType::class, [
                 'data' => null,
