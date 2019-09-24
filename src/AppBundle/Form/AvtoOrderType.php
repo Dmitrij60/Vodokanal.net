@@ -1,14 +1,11 @@
 <?php
-
 namespace AppBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-
 class AvtoOrderType extends AbstractType
 {
     /**
@@ -19,37 +16,47 @@ class AvtoOrderType extends AbstractType
         $builder
             ->add('district', ChoiceType::class, [
                 'choices' => [
+                    'г. Липецк' => 'г. Липецк',
                     'Данков' => 'Данков',
                     'Доброе' => 'Доброе',
                     'Измалково' => 'Измалково',
                     'Красное' => 'Красное',
+                    'Лебедянь' => 'Лебедянь',
+                    'Липецкий район' => 'Липецкий район',
+                    'Становое' => 'Становое',
+                    'Долгоруково' => 'Долгоруково',
+                    'Усмань' => 'Усмань',
+                    'Хлевное' => 'Хлевное',
+                    'Тербуны' => 'Тербуны',
+                    'Волово' => 'Волово',
+                    'Лев-Толстой' => 'Лев-Толстой',
+                    'Чаплыгин' => 'Чаплыгин',
+                    'Добринка' => 'Добринка',
+                    'Задонск' => 'Задонск',
                 ],
                 'label' => false,])
             ->add('reason', null, [
                 'label' =>false
             ])
-            ->add('publishedAt', DateType::class, [
-                'widget' => 'single_text',
-
-                // prevents rendering it as type="date", to avoid HTML5 date pickers
-                'html5' => false,
-
-                // adds a class that can be selected in JavaScript
-                'attr' => ['class' => 'js-datepicker'],
+            ->add('address', null, [
+                'label' =>false
+            ])
+            ->add('departureDate', DateType::class, [
+                'label' =>false,
+                'widget' => 'single_text'
             ])
             ->add('sender', HiddenType::class, [
                 'data' => null,
             ]);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\AvtoOrder'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -57,6 +64,4 @@ class AvtoOrderType extends AbstractType
     {
         return 'appbundle_avtoorder';
     }
-
-
 }

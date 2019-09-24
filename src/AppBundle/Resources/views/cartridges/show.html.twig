@@ -6,7 +6,11 @@
 
     <h1>Картридж: {{ cartridge.cartridgeModel }}</h1>
     <hr>
-    Подходит для принтера :{#{{ cartridge.printModel.printerModel }}#}<br>
+    Подходит для принтера :
+    {% for printer in printers %}
+    {{ printer.printerModel }} ,
+    {% endfor %}
+    <br>
     Комментарий :{{ cartridge.discription }}
 
 

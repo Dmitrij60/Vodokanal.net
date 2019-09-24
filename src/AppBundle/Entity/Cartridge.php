@@ -29,13 +29,6 @@ class Cartridge
     private $cartridgeModel;
 
     /**
-     * @var Printer
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Printer")
-     */
-    private $printModel;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="discription", type="string", length=255, nullable=true)
@@ -81,30 +74,6 @@ class Cartridge
     public function getCartridgeModel()
     {
         return $this->cartridgeModel;
-    }
-
-    /**
-     * Set printModel
-     *
-     * @param string $printModel
-     *
-     * @return Cartridge
-     */
-    public function setPrintModel($printModel)
-    {
-        $this->printModel = $printModel;
-
-        return $this;
-    }
-
-    /**
-     * Get printModel
-     *
-     * @return Printer|null
-     */
-    public function getPrintModel()
-    {
-        return $this->printModel;
     }
 
     /**

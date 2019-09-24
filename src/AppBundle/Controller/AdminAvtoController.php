@@ -63,6 +63,8 @@ class  AdminAvtoController extends ApplicationController
         $sender = $edit->getSender();
         $created = $edit->getCreated();
         $status = $edit->getStatus();
+        $address = $edit->getAddress();
+        $reason = $edit->getReason();
         $responsible = $edit->getDriver();
 
 
@@ -87,6 +89,8 @@ class  AdminAvtoController extends ApplicationController
             'template' => $template,
             'id' => $id,
             'district' => $district,
+            'address' => $address,
+            'reason' => $reason,
             'created' => $created,
             'status' => $status,
             'sender' => $sender,

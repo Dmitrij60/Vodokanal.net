@@ -8,23 +8,29 @@
         <hr>
         <br>
 
-      {{ form_start(orderForm) }}
+        {{ form_start(orderForm) }}
 
 
-      {{ form_row(orderForm.sender, {attr: { value : app.user.username } }) }}
-      <br>
+        {{ form_row(orderForm.sender, {attr: { value : app.user.username } }) }}
+        <br>
 
-      {{ form_label(orderForm.district, 'Укажите район выезда') }}
-      {{ form_row(orderForm.district) }}
-      <br>
+        {{ form_label(orderForm.district, 'Укажите район выезда') }}
+        {{ form_row(orderForm.district) }}
+        <br>
 
+        {{ form_label(orderForm.address, 'Укажите адрес') }}
+        {{ form_row(orderForm.address) }}
+        <br>
 
-        {{ form_row(orderForm.publishedAt) }}
-      {{ form_label(orderForm.reason, 'Укажите причину заявки на выезд') }}
+        {{ form_label(orderForm.reason, 'Укажите цель выезда') }}
+        {{ form_row(orderForm.reason) }}
+        <br>
 
-      <br>
+        {{ form_label(orderForm.departureDate, 'Укажите дату выезда') }}
+        {{ form_row(orderForm.departureDate) }}
+        <br>
 
-      {{ form_end(orderForm) }}
+        {{ form_end(orderForm) }}
         <br>
         <hr>
 
@@ -32,18 +38,7 @@
     </div>
 {% endblock %}
 
-{% block javascripts %}
-<script>
-    $(document).ready(function() {
-        // you may need to change this code if you are not using Bootstrap Datepicker
-        $('.js-datepicker').datepicker({
-            format: 'yyyy-mm-dd'
-        });
-    });
-</script>
-{% endblock %}
 {% block stylesheets %}
     <style>
-
     </style>
 {% endblock %}

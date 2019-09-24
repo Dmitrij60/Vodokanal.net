@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Cartridge;
+
 /**
  * PrinterRepository
  *
@@ -10,4 +12,14 @@ namespace AppBundle\Repository;
  */
 class PrinterRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByCartridgeId(Cartridge $cartridge)
+    {
+        return $this
+            ->createQueryBuilder('printer')
+            ->where('printer.cartridgeModel = :cartridgeModel')
+            ->setParameter('cartridgeModel', $cartridge)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

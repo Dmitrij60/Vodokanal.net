@@ -1,0 +1,55 @@
+{% extends template %}
+
+
+{% block title %} Edit {% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+
+       <h3>Редактировать строку</h3> <br>
+
+        <form   action="" method="POST">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Имя</th>
+                <th scope="col">ip</th>
+                <th scope="col">login</th>
+                <th scope="col">password</th>
+                <th scope="col">comment</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+
+                <th scope="row"> <input type="hidden" name="id" value="{{ id }}" /> {{ id }} </th>
+                <td><input type="text" value="{{ title }}" name="title" class="form-control" /></td>
+                <td><input type="text" value="{{ ip }}" name="ip" class="form-control" /></td>
+                <td><input type="text" value="{{ login }}" name="login" class="form-control" /></td>
+                <td><input type="text" value="{{ pass }}" name="pass" class="form-control" /></td>
+                <td><input type="text" value="{{ comm }}" name="comm" class="form-control" /></td>
+
+            </tr>
+            </tbody>
+        </table>
+            <input type="submit" value="Записать">
+        </form>
+
+        <hr>
+
+
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+
+{% endblock %}
+

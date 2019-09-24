@@ -94,6 +94,7 @@ class  AdminHandBookController extends ApplicationController
     public function addHandBoorRowAction(Request $request)
     {
         $template = $this->roleWithTemplate();
+        $buttonLink = 'path(\'add_handbook_row\')';
 
         $form = $this->createForm(HandBookType::class);
         $form->add('Добавить запись', SubmitType::class);
@@ -114,7 +115,8 @@ class  AdminHandBookController extends ApplicationController
 
         return $this->render('@App/admin/addRowHandBook.html.twig',[
             'orderForm' => $form->createView(),
-            'template' => $template
+            'template' => $template,
+            'buttonLink' => $buttonLink
         ]);
     }
 }

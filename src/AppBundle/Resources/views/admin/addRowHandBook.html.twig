@@ -11,23 +11,6 @@
       {{ form_start(orderForm) }}
 
 
-     {# {{ form_label(orderForm.department, 'Укажите отдел') }}
-      {{ form_row(orderForm.department) }}
-
-
-        {{ form_label(orderForm.fio, 'ФИО') }}
-        {{ form_row(orderForm.fio) }}
-
-        {{ form_label(orderForm.position, 'Должность') }}
-        {{ form_row(orderForm.position) }}
-
-        {{ form_label(orderForm.email, 'Email') }}
-        {{ form_row(orderForm.email) }}
-
-        {{ form_label(orderForm.shortPhone, 'Короткий телефон') }}
-        {{ form_row(orderForm.shortPhone) }}#}
-
-
         <table class="table table-hover">
             <thead>
             <tr>
@@ -42,14 +25,11 @@
             </thead>
             <tbody>
             <tr>
-
-
                 <td>{{ form_row(orderForm.fio) }}</td>
                 <td>{{ form_row(orderForm.department) }}</td>
                 <td>{{ form_row(orderForm.position) }}</td>
                 <td>{{ form_row(orderForm.email) }}</td>
                 <td>{{ form_row(orderForm.shortPhone) }}</td>
-
             </tr>
             </tbody>
         </table>

@@ -1,0 +1,49 @@
+{% extends template %}
+
+{% block title %} Добавить запись{% endblock %}
+
+{% block body %}
+    <div class="starter-template">
+        <h1>Добавить запись:</h1>
+        <hr>
+        <br>
+
+      {{ form_start(orderForm) }}
+
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Имя интерфейса</th>
+                <th scope="col">ip</th>
+                <th scope="col">Login</th>
+                <th scope="col">Пароль</th>
+                <th scope="col">Комментарий</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ form_row(orderForm.title) }}</td>
+                <td>{{ form_row(orderForm.ip) }}</td>
+                <td>{{ form_row(orderForm.login) }}</td>
+                <td>{{ form_row(orderForm.pass) }}</td>
+                <td>{{ form_row(orderForm.comm) }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+      {{ form_end(orderForm) }}
+        <br>
+        <hr>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+    </style>
+{% endblock %}
