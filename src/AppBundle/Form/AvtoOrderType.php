@@ -1,13 +1,11 @@
 <?php
-
 namespace AppBundle\Form;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class AvtoOrderType extends AbstractType
 {
     /**
@@ -43,19 +41,22 @@ class AvtoOrderType extends AbstractType
             ->add('address', null, [
                 'label' =>false
             ])
+            ->add('departureDate', DateType::class, [
+                'label' =>false,
+                'widget' => 'single_text'
+            ])
             ->add('sender', HiddenType::class, [
                 'data' => null,
             ]);
     }/**
-     * {@inheritdoc}
-     */
+ * {@inheritdoc}
+ */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\AvtoOrder'
         ));
     }
-
     /**
      * {@inheritdoc}
      */
@@ -63,6 +64,4 @@ class AvtoOrderType extends AbstractType
     {
         return 'appbundle_avtoorder';
     }
-
-
 }

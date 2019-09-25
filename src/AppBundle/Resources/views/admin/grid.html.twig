@@ -16,8 +16,17 @@
 
     </div>
     <div class="container2">
-        {% if button is defined %}
-            <a href="{{ path('add_handbook_row') }}"> <button> {{ button }} </button></a>
+        {% if buttonHandBook is defined %}
+            <a href="{{ path('add_handbook_row') }}"> <button> {{ buttonHandBook }} </button></a>
+        {% endif %}
+        {% if buttonSrvPass is defined %}
+            <a href="{{ path('add_srvpass_row') }}"> <button> {{ buttonSrvPass }} </button></a>
+        {% endif %}
+        {% if buttonWebAccPass is defined %}
+            <a href="{{ path('add_webaccountpass_row') }}"> <button> {{ buttonWebAccPass }} </button></a>
+        {% endif %}
+        {% if buttonMailPass is defined %}
+            <a href="{{ path('add_webinterfacepass_row') }}"> <button> {{ buttonMailPass }} </button></a>
         {% endif %}
 
         <hr>

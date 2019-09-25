@@ -221,8 +221,8 @@ class  AdminController extends ApplicationController
     public function gridHandBookAction()
     {
         $text = 'Справочник по АУП';
-        $button = "Добавить запись";
-        // Creates a simple grid based on your entity (ORM)
+        $buttonHandBook = "Добавить запись";
+
         $source = new Entity('AppBundle:HandBook');
 
         // Get a Grid instance
@@ -257,9 +257,196 @@ class  AdminController extends ApplicationController
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [
-            'button' => $button,
+            'buttonHandBook' => $buttonHandBook,
+            'param' => $text
+        ]);
+    }
+
+    /**
+     * @Route("/admin_srv_pass", name="admin_srvPass")
+     */
+    public function gridSrvPassAction()
+    {
+        $text = 'Парольная база. Сервера';
+        $buttonSrvPass = "Добавить запись";
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:SrvPass');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+       /* $grid->setDefaultOrder('department', 'desc');*/
+
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $responsible = new ActionsColumn('action3', '', [
+            'size' => '30'
+        ]);
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'ред.';
+        $editRoute = 'edit_srvpass_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+      /*  $editTitle = 'удал.';
+        $editRoute = 'del_handbook_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);*/
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'buttonSrvPass' => $buttonSrvPass,
             'param' => $text,
         ]);
     }
 
+    /**
+     * @Route("/admin_webinterfaces_pass", name="admin_WebInterfacesPass")
+     */
+    public function griWebInterfacePassAction()
+    {
+        $text = 'Парольная база. Web interfaces';
+        $button = "Добавить запись";
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:WebInterfacePass');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+        /* $grid->setDefaultOrder('department', 'desc');*/
+
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $responsible = new ActionsColumn('action3', '', [
+            'size' => '30'
+        ]);
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'ред.';
+        $editRoute = 'edit_webinterfacepass_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        /*  $editTitle = 'удал.';
+          $editRoute = 'del_handbook_row';
+          $rowEditAction = new RowAction($editTitle, $editRoute);
+          $rowEditAction->setColumn('action3');
+          $rowEditAction -> setRouteParameters ( array ('id'));
+          $grid->addRowAction($rowEditAction);*/
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'buttonMailPass' => $button,
+            'param' => $text,
+        ]);
+    }
+
+    /**
+     * @Route("/admin_webAccounts_pass", name="admin_WebAccountsPass")
+     */
+    public function gridWebAccountsPassAction()
+    {
+        $text = 'Парольная база. Личные кабинеты';
+        $button = "Добавить запись";
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:WebAccountsPass');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+        /* $grid->setDefaultOrder('department', 'desc');*/
+
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $responsible = new ActionsColumn('action3', '', [
+            'size' => '30'
+        ]);
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'ред.';
+        $editRoute = 'edit_webaccountpass_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        /*  $editTitle = 'удал.';
+          $editRoute = 'del_handbook_row';
+          $rowEditAction = new RowAction($editTitle, $editRoute);
+          $rowEditAction->setColumn('action3');
+          $rowEditAction -> setRouteParameters ( array ('id'));
+          $grid->addRowAction($rowEditAction);*/
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'buttonWebAccPass' => $button,
+            'param' => $text,
+        ]);
+    }
+
+    /**
+     * @Route("/admin_mail_pass", name="admin_MailPass")
+     */
+    public function gridMailPassAction()
+    {
+        $text = 'Парольная база. Почта';
+        $button = "Добавить запись";
+        // Creates a simple grid based on your entity (ORM)
+        $source = new Entity('AppBundle:MailPass');
+
+        // Get a Grid instance
+        $grid = $this->get('grid');
+
+        // Attach the source to the grid
+        $grid->setSource($source);
+
+        /* $grid->setDefaultOrder('department', 'desc');*/
+
+        // OR with only one value
+        $grid->setLimits(array(5 => 'по пять', 10 => 'по десять', 15 => 'по пятнадцать'));
+
+        $responsible = new ActionsColumn('action3', '', [
+            'size' => '30'
+        ]);
+        $grid->addColumn($responsible, 10);
+
+        $editTitle = 'ред.';
+        $editRoute = 'edit_mailpass_row';
+        $rowEditAction = new RowAction($editTitle, $editRoute);
+        $rowEditAction->setColumn('action3');
+        $rowEditAction -> setRouteParameters ( array ('id'));
+        $grid->addRowAction($rowEditAction);
+
+        /*  $editTitle = 'удал.';
+          $editRoute = 'del_handbook_row';
+          $rowEditAction = new RowAction($editTitle, $editRoute);
+          $rowEditAction->setColumn('action3');
+          $rowEditAction -> setRouteParameters ( array ('id'));
+          $grid->addRowAction($rowEditAction);*/
+
+        // Return the response of the grid to the template
+        return $grid->getGridResponse('@App/admin/grid.html.twig', [
+            'buttonMailPass' => $button,
+            'param' => $text,
+        ]);
+    }
 }

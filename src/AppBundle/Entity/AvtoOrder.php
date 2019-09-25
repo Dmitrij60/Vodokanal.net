@@ -53,13 +53,6 @@ class AvtoOrder
 
     /**
      * @var string
-     * @GRID\Column(title="статус", searchOnClick="true")
-     * @ORM\Column(name="status", type="string", length=255, nullable=true)
-     */
-    private $status;
-
-    /**
-     * @var string
      * @GRID\Column(title="Водитель")
      * @ORM\Column(name="driver", type="string", length=255, nullable=true)
      */
@@ -72,7 +65,19 @@ class AvtoOrder
      */
     private $created;
 
+    /**
+     * @var \DateTime
+     * @GRID\Column(title="дата выезда", format="d.m.y")
+     * @ORM\Column(name="departure_date", type="datetime", nullable=true)
+     */
+    private $departureDate;
 
+    /**
+     * @var string
+     * @GRID\Column(title="статус", searchOnClick="true")
+     * @ORM\Column(name="status", type="string", length=255, nullable=true)
+     */
+    private $status;
 
     public function __construct()
     {
@@ -187,29 +192,6 @@ class AvtoOrder
         return $this->sender;
     }
 
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return AvtoOrder
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
     /**
      * Set driver
@@ -257,6 +239,54 @@ class AvtoOrder
     public function getCreated()
     {
         return $this->created;
+    }
+
+    /**
+     * Set departureDate
+     *
+     * @param string $departureDate
+     *
+     * @return AvtoOrder
+     */
+    public function setDepartureDate($departureDate)
+    {
+        $this->departureDate = $departureDate;
+
+        return $this;
+    }
+
+    /**
+     * Get departureDate
+     *
+     * @return string
+     */
+    public function getDepartureDate()
+    {
+        return $this->departureDate;
+    }
+
+    /**
+     * Set status
+     *
+     * @param string $status
+     *
+     * @return AvtoOrder
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 
