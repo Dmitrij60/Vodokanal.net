@@ -28,34 +28,34 @@
     </div>
 
     {% block javascripts %}
-
-
         <script>
-// Динамический тайтл
-           /* function First(){
+            // Динамический тайтл
+            function First() {
                 $('title').text('Новая заявка!')
             };
-            function Second(){
+
+            function Second() {
                 $('title').text('Проверьте!')
             };
-            function Third(){
+
+            function Third() {
                 First();
                 setTimeout('Second()', 1000)
             };
 
-            function Intrvl(){
+            function Intrvl() {
                 setInterval('Third()', 2000)
-            };*/
+            };
 
 
+            //полная функция запуска
+            var orderCount = {output: 1};
 
-//полная функция запуска
-           /* var orderCount = {output: 1};
             function Ajax(orderCount) {
                 $(document).ready(function () {
                     that = $(this);
                     $.ajax({
-                        url: '{#{{ (path('ajax')) }}#}',
+                        url: '{{ (path('ajax')) }}',
                         type: "POST",
                         dataType: "json",
                         data: {"some_var_name": "some_var_value"},
@@ -63,19 +63,19 @@
                         cache: false,
                         success: function (data) {
                             if (orderCount.output !== data.output) {
-                                console.log(orderCount.output)
-                                console.log(data.output)
+                                console.log(orderCount.output);
+                                console.log(data.output);
 
-                                var intID = setInterval('Third()', 2000)
+                                var intID = setInterval('Third()', 2000);
 
                                 //Записать в сессию js data.output
 
                                 orderCount.output = data.output;
                                 console.log(orderCount.output);
-                                if(location.pathname == "/admin/grid/RepairOrder"){
+                                /*if(location.pathname == "/admin/grid/RepairOrder"){
                                     alert("111");
                                     clearInterval(intID);
-                                }
+                                }*/
 
                             } else {
                                 orderCount.output = 2;
@@ -87,24 +87,21 @@
                     });
                     return false;
                 });
-            }*/
+            }
 
-            /*$(document).ready(setInterval('Ajax(orderCount)', 5000));*/
-//проверка работа фронт сессии
-            /*if(window.sessionStorage && window.localStorage){
-                alert('+');
-            }*/
+            $(document).ready(setInterval('Ajax(orderCount)', 5000));
+            //проверка работа фронт сессии
 
 
 
 
 
-        /*$(document).ready(function(){
-            var a = location.pathname;
-            alert(a);
-        });*/
+            /*$(document).ready(function(){
+                var a = location.pathname;
+                alert(a);
+            });*/
 
-    </script>
+        </script>
     {% endblock %}
 
 {% endblock %}
