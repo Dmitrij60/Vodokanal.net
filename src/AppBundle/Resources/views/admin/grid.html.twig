@@ -25,8 +25,11 @@
         {% if buttonWebAccPass is defined %}
             <a href="{{ path('add_webaccountpass_row') }}"> <button> {{ buttonWebAccPass }} </button></a>
         {% endif %}
-        {% if buttonMailPass is defined %}
+        {% if buttonWebInterfacePass is defined %}
             <a href="{{ path('add_webinterfacepass_row') }}"> <button> {{ buttonMailPass }} </button></a>
+        {% endif %}
+        {% if buttonMailPass is defined %}
+            <a href="{{ path('add_mailpass_row') }}"> <button> {{ buttonMailPass }} </button></a>
         {% endif %}
 
         <hr>
@@ -98,7 +101,8 @@
                 });
             }
 
-            $(document).ready(setInterval('Ajax(orderCount)', 5000));
+           //
+            // $(document).ready(setInterval('Ajax(orderCount)', 5000));
             //проверка работа фронт сессии
 
 

@@ -43,7 +43,7 @@ class AvtoOrderType extends AbstractType
             ])
             ->add('departureDate', DateType::class, [
                 'label' =>false,
-                'widget' => 'single_text'
+                'widget' => 'single_text',
             ])
             ->add('sender', HiddenType::class, [
                 'data' => null,
